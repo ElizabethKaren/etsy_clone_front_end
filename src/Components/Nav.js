@@ -13,7 +13,7 @@ export class Nav extends Component {
 
     userLoggedIn = (obj) => {
         if(obj === null ){
-            return 'Sign In'
+            return <NavLink to='/login'>Log In</NavLink>
         } else {
             return `Welcome ${obj.first_name}`
         }

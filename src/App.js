@@ -2,12 +2,12 @@ import './App.css';
 import TopOfApp from './Components/TopOfApp'
 import NewItemForm from './Components/NewItemForm'
 import ProfilePage from './Components/ProfilePage'
-import ReviewForm from './Components/ReviewForm'
 import { Route, Switch } from 'react-router-dom';
 import ItemContainer from './Components/ItemContainer';
 import React, { Component } from 'react';
 import Checkout from './Components/Checkout'
 import Nav from './Components/Nav'
+import SignIn from './Components/SignIn'
 
 const itemsUrl = 'http://localhost:3000/items'
 const reviewsUrl = 'http://localhost:3000/reviews'
@@ -20,9 +20,12 @@ export class App extends Component {
     reviews: [],
     purchases: [],
     users: [], 
+    logInFormEmail: '',
+    logInFormPassWord: '',
     catagory: '',
     cart: null,
-    loggedInUser: {"id":31,"first_name":"Ophelia","last_name":"Hoppe","password":"password1","bio":"You're killing independent George!","bank_num":null,"email":"fake@email.com","created_at":"2020-06-26T19:24:40.742Z","updated_at":"2020-06-26T19:24:40.742Z"}
+    userSignedIn: false,
+    loggedInUser: null
 }
 
 componentDidMount(){
@@ -76,17 +79,31 @@ handleNewReview = (review, rating, itemId) => {
   }).then(res => res.json()).then(newReview => this.setState({ reviews: [...this.state.reviews, newReview] }))
 }
 
+handleSignIn = (event) => this.setState({ [event.target.name]: event.target.value })
+
+
+verifyUser = () => {
+  const user = this.state.users.find(user => user.email === this.state.logInFormEmail)
+  if(user.password === this.state.logInFormPassWord){
+    this.setState({ loggedInUser: user })
+  } else {
+    alert('Incorrect Email or Password')
+  }
+}
+
   render() {
     let categories = this.state.items.map(item => item.category)
+    console.log(this.state.logInFormPassWord)
   return(
     <div className="App">
-      <Nav loggedInUser={this.state.loggedInUser} cart={this.state.cart} /> 
+      <Nav userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart} /> 
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
          const thisID = parseInt(stuff.match.params.id)
        return <ItemContainer handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
        <Route path='/profile/newitem' render={() => <NewItemForm /> }/>
+       <Route path='/login' render={() => <SignIn verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
        <Route path='/profile' render={() => <ProfilePage categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} reviews={this.state.reviews} /> } />
        <Route path='/' render={() => <TopOfApp items={this.state.items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
