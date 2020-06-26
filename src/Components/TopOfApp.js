@@ -7,6 +7,7 @@ export class TopOfApp extends Component {
     render() {
         let categories = this.props.items.map(item => item.category)
         let itemsShown = this.props.items.filter(item => item.category.includes(this.props.catagory))
+        console.log(categories)
         return (
             <div className='top-of-app-wrap'>
                 <h1>Browse By Category</h1>
@@ -14,7 +15,9 @@ export class TopOfApp extends Component {
                     <option>All</option>
                     {categories.map(cat => <option key={cat.id}>{cat}</option>)}
                 </select>
+                <div className="items">
                {itemsShown.map(item => <ItemDiv key={item.id} {...item} reviews={this.props.reviews} /> ) }
+                </div>
                {/* {this.state.items.map(item => <ItemContainer key={item.id} {...item} /> )} */}
             </div>
         )

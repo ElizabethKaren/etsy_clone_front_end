@@ -77,7 +77,7 @@ handleNewReview = (review, rating, itemId) => {
 }
 
   render() {
-
+    let categories = this.state.items.map(item => item.category)
   return(
     <div className="App">
       <Nav loggedInUser={this.state.loggedInUser} cart={this.state.cart} /> 
@@ -87,7 +87,7 @@ handleNewReview = (review, rating, itemId) => {
        return <ItemContainer handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
        <Route path='/profile/newitem' render={() => <NewItemForm /> }/>
-       <Route path='/profile' render={() => <ProfilePage reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
+       <Route path='/profile' render={() => <ProfilePage categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} /> } />
        <Route path='/items/:id/review' render={() => <ReviewForm /> }/> 
        <Route path='/' render={() => <TopOfApp items={this.state.items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
