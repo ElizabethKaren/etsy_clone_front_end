@@ -1,0 +1,9 @@
+.navbar{
+    vertical-align: baseline;
+    vertical-align: text-top;
+    vertical-align: text-bottom;
+    vertical-align: sub;
+    vertical-align: super;
+    display: inline;
+    font-weight: 600;
+}

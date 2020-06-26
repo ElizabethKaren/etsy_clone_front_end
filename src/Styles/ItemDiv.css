@@ -1,0 +1,15 @@
+.item-wrapper {
+ position: relative;
+ float: left;
+ width: 200px;
+ padding: 13px;
+}
+.item-image{
+    position: relative;
+    width: 200px;
+}
+.item-title{
+    font-size: 14px;
+    font-weight: bold;
+    height: 50px;
+}

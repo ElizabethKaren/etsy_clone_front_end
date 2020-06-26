@@ -1,0 +1,8 @@
+.top-of-app-wrap{
+    display: inline-block; 
+}
+.dropdown-wrapper{
+    position: absolute;
+    top: 90px;
+    left: 325px; 
+}
