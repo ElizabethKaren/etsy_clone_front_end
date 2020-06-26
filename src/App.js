@@ -88,8 +88,7 @@ handleNewReview = (review, rating, itemId) => {
        } }/> 
        <Route path='/profile/newitem' render={() => <NewItemForm /> }/>
        <Route path='/profile' render={() => <ProfilePage categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
-       <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} /> } />
-       <Route path='/items/:id/review' render={() => <ReviewForm /> }/> 
+       <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} reviews={this.state.reviews} /> } />
        <Route path='/' render={() => <TopOfApp items={this.state.items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
     </div>

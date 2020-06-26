@@ -25,6 +25,8 @@ export class Nav extends Component {
                <NavLink to='/profile'>{this.userLoggedIn(this.props.loggedInUser)}</NavLink>
                <br></br>
                <NavLink to='/checkout'>{this.isCart(this.props.cart)}</NavLink>
+               <br></br>
+               <NavLink to='/'>Browse Items</NavLink>
             </div>
         )
     }

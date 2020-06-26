@@ -13,7 +13,6 @@ export class ProfilePage extends Component {
         const yourPurchases = this.props.purchases.filter(purch => purch.user_id === this.props.loggedInUser.id)
         const yourItems = this.props.items.filter(item => item.user_id === this.props.loggedInUser.id) 
         const yourPurchItems = yourPurchases.map(purch => purch.item)
-        console.log(yourPurchItems)
         return (
             <div>
                 <h1>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h1>
