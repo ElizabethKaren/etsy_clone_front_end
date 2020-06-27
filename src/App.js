@@ -14,6 +14,7 @@ const reviewsUrl = 'http://localhost:3000/reviews'
 const usersUrl = 'http://localhost:3000/users'
 const purchasesUrl = 'http://localhost:3000/purchases'
 const messageUrl = 'http://localhost:3000/messages'
+const repliesUrl = 'http://localhost:3000/replies'
 
 export class App extends Component {
   state = {
@@ -26,6 +27,7 @@ export class App extends Component {
     catagory: '',
     cart: null,
     userSignedIn: false,
+    replies: [],
     loggedInUser: {"id":61,"first_name":"Preston","last_name":"Bayer","password":"password1","bio":"I don't trust the guy. I think he regifted, then he degifted, and now he's using an upstairs invite as a springboard to a Super bowl sex romp.","bank_num":null,"email":"fake@email.com","created_at":"2020-06-27T03:08:51.100Z","updated_at":"2020-06-27T03:08:51.100Z"},
     messages: []
 }
@@ -36,6 +38,7 @@ componentDidMount(){
   fetch(usersUrl).then(res => res.json()).then(users => this.setState({ users }))
   fetch(purchasesUrl).then(res => res.json()).then(purchases => this.setState({ purchases }))
   fetch(messageUrl).then(res => res.json()).then(messages => this.setState({ messages }))
+  fetch(repliesUrl).then(res => res.json()).then(replies => this.setState({ replies }))
 }
 
 handleOnchange = (event) => {
@@ -96,14 +99,14 @@ verifyUser = () => {
 
   render() {
     let categories = this.state.items.map(item => item.category)
-    console.log(this.state.logInFormPassWord)
+
   return(
     <div className="App">
       <Nav userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart} /> 
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
          const thisID = parseInt(stuff.match.params.id)
-       return <ItemContainer userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
+       return <ItemContainer messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
        <Route path='/profile/newitem' render={() => <NewItemForm /> }/>
        <Route path='/login' render={() => <SignIn verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ItemDiv from './ItemDiv'
 import NewItemForm from './NewItemForm'
 import MessageDiv from './MessageDiv'
+import '../Styles/ProfilePage.css'
 
 export class ProfilePage extends Component {
     state = {
@@ -20,18 +21,20 @@ export class ProfilePage extends Component {
         const yourItems = this.props.items.filter(item => item.user_id === this.props.loggedInUser.id) 
         const yourPurchItems = yourPurchases.map(purch => purch.item)
         const yourMessages = this.props.messages.filter(mes => mes.seller_id === this.props.loggedInUser.id)
-        console.log(this.state)
+
         return (
-            <div>
-                <h1>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h1>
-                <h3>See your {yourMessages.length} New Messages</h3><button onClick={this.handleOnClick}>{this.state.seeMessages? 'Hide Messages' : 'See My Messages'}</button>
+            <div className='ui link cards'>
+                <h1 className='ui centered card header'>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h1>
+                {/* <h3>See your {yourMessages.length} New Messages</h3><button onClick={this.handleOnClick}>{this.state.seeMessages? 'Hide Messages' : 'See My Messages'}</button> */}
+                <div className='message-wrap'>
                 {this.state.seeMessages ? this.showMessages(yourMessages) : null }
-                <h3>Your Items For Sale</h3>
+                </div>
+                <div className='your-sale-items'>
+                <h3 class="right floated">Your Items For Sale</h3>
                 <button onClick={this.click}>Add New Item</button>
                 {this.state.formVisable ? <NewItemForm categories={this.props.categories} /> : null }
                 {yourItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item} /> )}
-                <br></br>
-                <br></br>
+                </div>
                 <h3>Your purchases</h3>
                 {yourPurchItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item}/>)}
             </div>

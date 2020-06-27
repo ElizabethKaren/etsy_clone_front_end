@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
+import MessageDiv from './MessageDiv'
 
 export class ItemContainer extends Component {
     state = {
@@ -50,6 +51,9 @@ export class ItemContainer extends Component {
         let justRating = theseReviews.map(review => review.rating)
         let total = justRating.reduce((a, b) => a + b, 0)
         let nowManyStars = total/totalReviewsAmount
+        let questions = this.props.messages.filter(mes => mes.item_id === id)
+        let howManyQ = questions.length
+
         return (
             <div>
                <h1>{oneItem.title} : {oneItem.category} </h1>
@@ -62,6 +66,8 @@ export class ItemContainer extends Component {
              <button onClick={this.handleOnClick}>Add Review</button>
              {this.state.reviewFormVisable ? <ReviewForm submitReview={this.submitReview} handleOnchange={this.handleOnchange} reviewInput={this.state.reviewInput} item={oneItem}/> : null }
              {theseReviews.map(review => <Reviews users={this.props.users} key={review.id} {...review} />)}
+              {howManyQ ? <h4>Questions</h4> : null } 
+              {questions.map(mes => <MessageDiv users={this.props.users} replies={this.props.replies} key={mes.id} {...mes} /> )}
 
             </div>
         )
