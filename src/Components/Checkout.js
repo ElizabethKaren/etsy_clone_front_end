@@ -13,9 +13,11 @@ export class Checkout extends Component {
         return (
             <div>
                 <h2>Your Cart</h2>
-                 {this.props.cart ? <button onClick={this.completeOrder}>Order Now</button> : <Link to='/'><button>Find Items</button></Link> }
+                 {this.props.cart ? <button onClick={this.completeOrder}>Order Now</button> : <Link to='/'><button className='tiny ui button'>Find Items</button></Link> }
                  <h2>{this.state.orderComplete ? 'Thank you for your order!' : null }</h2>
+                 <div className='ui celled grid'>
                 {this.props.cart ? this.props.cart.map(item => <ItemDiv key={item.id} {...item} reviews={this.props.reviews} />) : null }
+                </div>
             </div>
         )
     }

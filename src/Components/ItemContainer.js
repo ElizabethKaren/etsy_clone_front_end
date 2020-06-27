@@ -57,7 +57,7 @@ export class ItemContainer extends Component {
         return (
             <div>
                <h1>{oneItem.title} : {oneItem.category} </h1>
-               <img src={oneItem.picture} alt={oneItem.title} />
+               <img className='ui fluid image' src={oneItem.picture} alt={oneItem.title} />
                <h4>${oneItem.price}</h4>
              <h4>{totalReviewsAmount === 0? 'Be the first to Review' : this.starsString(nowManyStars) }</h4>
              {this.state.messageBarVisable ? <input onChange={this.handleOnchange} name='questionInput' value={this.state.questionInput} placeholder='ask a question'></input> : null }
