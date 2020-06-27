@@ -13,6 +13,7 @@ const itemsUrl = 'http://localhost:3000/items'
 const reviewsUrl = 'http://localhost:3000/reviews'
 const usersUrl = 'http://localhost:3000/users'
 const purchasesUrl = 'http://localhost:3000/purchases'
+const messageUrl = 'http://localhost:3000/messages'
 
 export class App extends Component {
   state = {
@@ -25,7 +26,8 @@ export class App extends Component {
     catagory: '',
     cart: null,
     userSignedIn: false,
-    loggedInUser: null
+    loggedInUser: {"id":61,"first_name":"Preston","last_name":"Bayer","password":"password1","bio":"I don't trust the guy. I think he regifted, then he degifted, and now he's using an upstairs invite as a springboard to a Super bowl sex romp.","bank_num":null,"email":"fake@email.com","created_at":"2020-06-27T03:08:51.100Z","updated_at":"2020-06-27T03:08:51.100Z"},
+    messages: []
 }
 
 componentDidMount(){
@@ -33,6 +35,7 @@ componentDidMount(){
   fetch(reviewsUrl).then(res => res.json()).then(reviews => this.setState({ reviews }))
   fetch(usersUrl).then(res => res.json()).then(users => this.setState({ users }))
   fetch(purchasesUrl).then(res => res.json()).then(purchases => this.setState({ purchases }))
+  fetch(messageUrl).then(res => res.json()).then(messages => this.setState({ messages }))
 }
 
 handleOnchange = (event) => {
@@ -100,11 +103,11 @@ verifyUser = () => {
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
          const thisID = parseInt(stuff.match.params.id)
-       return <ItemContainer handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
+       return <ItemContainer userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
        <Route path='/profile/newitem' render={() => <NewItemForm /> }/>
        <Route path='/login' render={() => <SignIn verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
-       <Route path='/profile' render={() => <ProfilePage categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
+       <Route path='/profile' render={() => <ProfilePage messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} reviews={this.state.reviews} /> } />
        <Route path='/' render={() => <TopOfApp items={this.state.items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
