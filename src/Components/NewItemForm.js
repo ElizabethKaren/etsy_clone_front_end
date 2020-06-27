@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 
 export class NewItemForm extends Component {
     render() {
+        let cats = this.props.categories.filter((v, i, a) => a.indexOf(v) === i); 
+        cats.sort((a,b)=> a > b ? 1 : - 1)
         return (
             <div>
                 <p>Choose Category</p>
                 <select>
-                    {this.props.categories.map(cat => <option>{cat}</option>)}
+                    {cats.map(cat => <option>{cat}</option>)}
                 </select>
                 <br></br>
                 <input placeholder='item title'></input>

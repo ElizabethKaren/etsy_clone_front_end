@@ -97,6 +97,8 @@ verifyUser = () => {
   }
 }
 
+addNewMessage = (obj) => this.setState({ messages: [...this.state.messages, obj ]})
+
   render() {
     let categories = this.state.items.map(item => item.category)
 
@@ -106,11 +108,11 @@ verifyUser = () => {
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
          const thisID = parseInt(stuff.match.params.id)
-       return <ItemContainer messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
+       return <ItemContainer addNewMessage={this.addNewMessage} messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
        <Route path='/profile/newitem' render={() => <NewItemForm /> }/>
        <Route path='/login' render={() => <SignIn verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
-       <Route path='/profile' render={() => <ProfilePage messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
+       <Route path='/profile' render={() => <ProfilePage replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} reviews={this.state.reviews} /> } />
        <Route path='/' render={() => <TopOfApp items={this.state.items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>

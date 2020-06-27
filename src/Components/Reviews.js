@@ -9,8 +9,8 @@ export class Reviews extends Component {
     render() {
         const reviewer = this.props.users.find(user => user.id === this.props.user_id)
         return (
-            <div className='ui threaded comments review_wrapper'>
-                <p>{reviewer.first_name} {reviewer.last_name} {this.starsString(this.props.rating) }</p>
+            <div className='comment'>
+                <p className='author'>{reviewer.first_name} {reviewer.last_name} {this.starsString(this.props.rating) }</p>
                  <p>{this.props.content} </p>
             </div>
         )

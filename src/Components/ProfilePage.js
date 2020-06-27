@@ -21,7 +21,7 @@ export class ProfilePage extends Component {
         const yourItems = this.props.items.filter(item => item.user_id === this.props.loggedInUser.id) 
         const yourPurchItems = yourPurchases.map(purch => purch.item)
         const yourMessages = this.props.messages.filter(mes => mes.seller_id === this.props.loggedInUser.id)
-
+        console.log(yourMessages)
         return (
             <div className='ui link cards'>
                 <h1 className='ui centered card header'>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h1>
@@ -35,8 +35,12 @@ export class ProfilePage extends Component {
                 {this.state.formVisable ? <NewItemForm categories={this.props.categories} /> : null }
                 {yourItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item} /> )}
                 </div>
-                <h3>Your purchases</h3>
-                {yourPurchItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item}/>)}
+                {/* <h3>Your purchases</h3>
+                {yourPurchItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item}/>)} */}
+                 <div className='ui comments'>
+              {/* {howManyQ ? <h4 className='ui dividing header'>Questions</h4> : null }  */}
+              {yourMessages.map(mes => <MessageDiv users={this.props.users} replies={this.props.replies} key={mes.id} {...mes} /> )}
+              </div>
             </div>
         )
     }

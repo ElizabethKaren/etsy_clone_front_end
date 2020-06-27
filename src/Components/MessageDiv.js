@@ -31,8 +31,11 @@ export class MessageDiv extends Component {
         const theseReplies = this.props.replies.filter(reply => reply.message_id === this.props.id)
 
         return (
-            <div className='ui threaded comments review_wrapper'>
-                 {user.first_name}: {this.props.content}
+            <div className='comment'>
+                <div className='author'>
+                  {user.first_name}
+                </div>
+                {this.props.content}
                 {this.state.answerBarShown ? <input onChange={this.bar} name='answerInput' value={this.state.answerInput} placeholder='reply...'></input> : null }
                 {theseReplies.map(re => <Reply users={this.props.users} key={re.id} {...re} />)}
             </div>

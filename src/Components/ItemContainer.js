@@ -37,7 +37,7 @@ export class ItemContainer extends Component {
                     accept: 'application/json'
                 },
                 body: JSON.stringify(obj)
-            }).then(res => res.json()).then(mes => console.log(mes))
+            }).then(res => res.json()).then(mes => this.props.addNewMessage(mes))
          }
          this.setState({ messageBarVisable: !this.state.messageBarVisable })
     }
@@ -60,15 +60,19 @@ export class ItemContainer extends Component {
                <img className='ui fluid image' src={oneItem.picture} alt={oneItem.title} />
                <h4>${oneItem.price}</h4>
              <h4>{totalReviewsAmount === 0? 'Be the first to Review' : this.starsString(nowManyStars) }</h4>
-             {this.state.messageBarVisable ? <input onChange={this.handleOnchange} name='questionInput' value={this.state.questionInput} placeholder='ask a question'></input> : null }
-             <button onClick={this.handleMessage}>{this.state.messageBarVisable ? 'Submit Message' : 'Contact Seller'}</button>
-             <button onClick={() => this.props.handleInCart(this.props.thisID)}>Add to Cart</button>
-             <button onClick={this.handleOnClick}>Add Review</button>
+             <button className='ui dividing header' onClick={() => this.props.handleInCart(this.props.thisID)}>Add to Cart</button>
+
+             <div className='ui comments'>
+             <button onClick={this.handleOnClick} className='ui dividing header'>Add Review</button>
              {this.state.reviewFormVisable ? <ReviewForm submitReview={this.submitReview} handleOnchange={this.handleOnchange} reviewInput={this.state.reviewInput} item={oneItem}/> : null }
              {theseReviews.map(review => <Reviews users={this.props.users} key={review.id} {...review} />)}
-              {howManyQ ? <h4>Questions</h4> : null } 
+             </div>
+             <div className='ui comments'>
+              {/* {howManyQ ? <h4 className='ui dividing header'>Questions</h4> : null }  */}
+              {this.state.messageBarVisable ? <input onChange={this.handleOnchange} name='questionInput' value={this.state.questionInput} placeholder='ask a question'></input> : null }
+             <button className='ui dividing header' onClick={this.handleMessage}>{this.state.messageBarVisable ? 'Submit Message' : 'Contact Seller'}</button>
               {questions.map(mes => <MessageDiv users={this.props.users} replies={this.props.replies} key={mes.id} {...mes} /> )}
-
+              </div>
             </div>
         )
     }
