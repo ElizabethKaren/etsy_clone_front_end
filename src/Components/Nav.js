@@ -21,12 +21,14 @@ export class Nav extends Component {
     render() {
 
         return (
-            <div className='navbar'>
+            <div className='ui item'>
+                <h3 className='ui center aligned header'>
                <NavLink to='/profile'>{this.userLoggedIn(this.props.loggedInUser)}</NavLink>
                <br></br>
                <NavLink to='/checkout'>{this.isCart(this.props.cart)}</NavLink>
                <br></br>
                <NavLink to='/'>Browse Items</NavLink>
+               </h3>
             </div>
         )
     }

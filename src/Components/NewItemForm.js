@@ -5,7 +5,7 @@ export class NewItemForm extends Component {
         let cats = this.props.categories.filter((v, i, a) => a.indexOf(v) === i); 
         cats.sort((a,b)=> a > b ? 1 : - 1)
         return (
-            <div>
+            <div className='ui form'>
                 <p>Choose Category</p>
                 <select>
                     {cats.map(cat => <option>{cat}</option>)}

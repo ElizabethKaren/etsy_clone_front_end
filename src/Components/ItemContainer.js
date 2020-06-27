@@ -55,7 +55,7 @@ export class ItemContainer extends Component {
         let howManyQ = questions.length
 
         return (
-            <div>
+            <div className='ui centered card'>
                <h1>{oneItem.title} : {oneItem.category} </h1>
                <img className='ui fluid image' src={oneItem.picture} alt={oneItem.title} />
                <h4>${oneItem.price}</h4>
@@ -69,8 +69,10 @@ export class ItemContainer extends Component {
              </div>
              <div className='ui comments'>
               {/* {howManyQ ? <h4 className='ui dividing header'>Questions</h4> : null }  */}
+              <div className='ui form'>
               {this.state.messageBarVisable ? <input onChange={this.handleOnchange} name='questionInput' value={this.state.questionInput} placeholder='ask a question'></input> : null }
-             <button className='ui dividing header' onClick={this.handleMessage}>{this.state.messageBarVisable ? 'Submit Message' : 'Contact Seller'}</button>
+             <button className='ui dividing header ui button' onClick={this.handleMessage}>{this.state.messageBarVisable ? 'Submit Message' : 'Contact Seller'}</button>
+             </div>
               {questions.map(mes => <MessageDiv users={this.props.users} replies={this.props.replies} key={mes.id} {...mes} /> )}
               </div>
             </div>

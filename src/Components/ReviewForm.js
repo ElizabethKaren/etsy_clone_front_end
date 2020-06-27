@@ -7,7 +7,7 @@ export class ReviewForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className='ui form'>
                 <select onChange={this.props.handleOnchange} name='reviewStarRating'>
                     <option value='1'>{this.starsString(1)}</option>
                     <option value='2'>{this.starsString(2)}</option>
