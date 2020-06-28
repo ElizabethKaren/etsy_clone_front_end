@@ -23,7 +23,7 @@ export class ProfilePage extends Component {
         const yourMessages = this.props.messages.filter(mes => mes.seller_id === this.props.loggedInUser.id)
         console.log(yourMessages)
         return (
-            <div className='ui link cards'>
+            <div className='ui celled grid'>
                 <h1 className='ui centered card header'>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h1>
                 {/* <h3>See your {yourMessages.length} New Messages</h3><button onClick={this.handleOnClick}>{this.state.seeMessages? 'Hide Messages' : 'See My Messages'}</button> */}
                 <div className='message-wrap'>
@@ -31,16 +31,17 @@ export class ProfilePage extends Component {
                 </div>
                 <div className='your-sale-items'>
                 <h3 class="right floated">Your Items For Sale</h3>
-                <button onClick={this.click}>Add New Item</button>
-                {this.state.formVisable ? <NewItemForm categories={this.props.categories} /> : null }
+                <button className="ui button" tabindex="0" onClick={this.click}>Add New Item</button>
+                {this.state.formVisable ? <NewItemForm newItemSubmit={this.props.newItemSubmit} user_id={this.props.loggedInUser.id} categories={this.props.categories} /> : null }
                 {yourItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item} /> )}
                 </div>
                 {/* <h3>Your purchases</h3>
                 {yourPurchItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item}/>)} */}
-                 <div className='ui comments'>
+                 {/* <div className='ui comments'> */}
               {/* {howManyQ ? <h4 className='ui dividing header'>Questions</h4> : null }  */}
               {yourMessages.map(mes => <MessageDiv users={this.props.users} replies={this.props.replies} key={mes.id} {...mes} /> )}
-              </div>
+              {/* </div> */}
+              <button className="ui button" tabindex="0" onClick={this.props.handleSignOut}>Sign Out</button>
             </div>
         )
     }

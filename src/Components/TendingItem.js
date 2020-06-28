@@ -11,7 +11,7 @@ export class TendingItem extends Component {
     render() {
         const items = this.props.items 
         const item = items[this.props.index]
-        console.log(item)
+      
         return (
             <div>
                 <h3>Trending Item...</h3>

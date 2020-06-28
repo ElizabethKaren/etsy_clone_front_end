@@ -17,7 +17,7 @@ export class ItemDiv extends Component {
         let nowManyStars = total/totalReviewsAmount
   
         return (
-            <div className='item-wrapper'>
+            <div className='ui centered card item-wrapper'>
                 <p className='item-title'>{this.props.title}: {this.props.category} </p>
                 <Link to={`/items/${this.props.id}`} >
                 <img className='item-image' src={this.props.picture} alt={this.props.title}/> 

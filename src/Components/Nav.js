@@ -12,7 +12,7 @@ export class Nav extends Component {
     }
 
     userLoggedIn = (obj) => {
-        if(obj === null ){
+        if(obj === {} ){
             return <NavLink to='/login'>Log In</NavLink>
         } else {
             return `Welcome ${obj.first_name}`
@@ -23,11 +23,12 @@ export class Nav extends Component {
         return (
             <div className='ui item'>
                 <div className='item'>
-                <img className='ui small circular image' src='https://seekvectorlogo.com/wp-content/uploads/2018/01/etsy-vector-logo-small.png' alt='etsy'/> 
+                <NavLink to='/'><img className='ui small circular image' src='https://seekvectorlogo.com/wp-content/uploads/2018/01/etsy-vector-logo-small.png' alt='etsy'/></NavLink>
                 <h3 className='ui center aligned header'>
                <NavLink to='/profile'>{this.userLoggedIn(this.props.loggedInUser)}&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>
                <NavLink to='/checkout'>{this.isCart(this.props.cart)}&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>
-               <NavLink to='/'>Browse Items</NavLink>
+               <NavLink to='/'>Browse Items&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>
+               <NavLink to='/profile'>{this.props.loggedInUser.first_name === 'User' ? <NavLink to='/login'>Log In</NavLink> : 'Sign Out' }</NavLink>
                </h3>
                </div>
             </div>

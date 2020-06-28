@@ -55,13 +55,14 @@ export class ItemContainer extends Component {
         let howManyQ = questions.length
 
         return (
-            <div className='ui centered card'>
+            <div className='ui celled grid'>
                <h1>{oneItem.title} : {oneItem.category} </h1>
                <img className='ui fluid image' src={oneItem.picture} alt={oneItem.title} />
                <h4>${oneItem.price}</h4>
              <h4>{totalReviewsAmount === 0? 'Be the first to Review' : this.starsString(nowManyStars) }</h4>
              <button className='ui dividing header' onClick={() => this.props.handleInCart(this.props.thisID)}>Add to Cart</button>
-
+              
+              <div className='three wide column'>
              <div className='ui comments'>
              <button onClick={this.handleOnClick} className='ui dividing header'>Add Review</button>
              {this.state.reviewFormVisable ? <ReviewForm submitReview={this.submitReview} handleOnchange={this.handleOnchange} reviewInput={this.state.reviewInput} item={oneItem}/> : null }
@@ -74,6 +75,7 @@ export class ItemContainer extends Component {
              <button className='ui dividing header ui button' onClick={this.handleMessage}>{this.state.messageBarVisable ? 'Submit Message' : 'Contact Seller'}</button>
              </div>
               {questions.map(mes => <MessageDiv users={this.props.users} replies={this.props.replies} key={mes.id} {...mes} /> )}
+              </div>
               </div>
             </div>
         )

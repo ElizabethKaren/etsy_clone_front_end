@@ -111,7 +111,32 @@ verifyUser = () => {
   }
 }
 
+handleSignOut = () => this.setState({ loggedInUser: {first_name: 'User'} })
+
 addNewMessage = (obj) => this.setState({ messages: [...this.state.messages, obj ]})
+
+createAccout = (obj) => {
+  fetch(usersUrl, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json'
+    },
+    body: JSON.stringify(obj)
+  }).then(res => res.json()).then(newUser => this.setState({ users: [...this.state.users, newUser], loggedInUser: newUser }))
+}
+
+newItemSubmit = (obj) => {
+  fetch(itemsUrl, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json'
+    },
+    body: JSON.stringify(obj)
+  }).then(res => res.json()).then(newItem => this.setState({ items: [...this.state.items, newItem] }))
+}
+
 
   render() {
     let categories = this.state.items.map(item => item.category)
@@ -125,8 +150,8 @@ addNewMessage = (obj) => this.setState({ messages: [...this.state.messages, obj 
        return <ItemContainer addNewMessage={this.addNewMessage} messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
        <Route path='/profile/newitem' render={() => <NewItemForm /> }/>
-       <Route path='/login' render={() => <SignIn verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
-       <Route path='/profile' render={() => <ProfilePage replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
+       <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
+       <Route path='/profile' render={() => <ProfilePage newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} reviews={this.state.reviews} /> } />
        <Route path='/' render={() => <TopOfApp index={this.state.itemIndex} items={this.state.items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
