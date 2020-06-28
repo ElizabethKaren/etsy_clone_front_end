@@ -25,6 +25,7 @@ export class Nav extends Component {
                 <div className='item'>
                 <NavLink to='/'><img className='ui small circular image' src='https://seekvectorlogo.com/wp-content/uploads/2018/01/etsy-vector-logo-small.png' alt='etsy'/></NavLink>
                 <h3 className='ui center aligned header'>
+                    <NavLink to='/favorites'>My Favorites&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>
                <NavLink to='/profile'>{this.userLoggedIn(this.props.loggedInUser)}&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>
                <NavLink to='/checkout'>{this.isCart(this.props.cart)}&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>
                <NavLink to='/'>Browse Items&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>

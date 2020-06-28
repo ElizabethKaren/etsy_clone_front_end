@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import Checkout from './Components/Checkout'
 import Nav from './Components/Nav'
 import SignIn from './Components/SignIn'
+import MyFavs from './Components/MyFavs'
 
 const itemsUrl = 'http://localhost:3000/items'
 const reviewsUrl = 'http://localhost:3000/reviews'
@@ -15,6 +16,7 @@ const usersUrl = 'http://localhost:3000/users'
 const purchasesUrl = 'http://localhost:3000/purchases'
 const messageUrl = 'http://localhost:3000/messages'
 const repliesUrl = 'http://localhost:3000/replies'
+const favsUrl = 'http://localhost:3000/favorites'
 
 export class App extends Component {
   state = {
@@ -31,7 +33,8 @@ export class App extends Component {
     userSignedIn: false,
     replies: [],
     loggedInUser: {"id":271,"first_name":"Elliot","last_name":"Will","password":"password1","bio":"That’s the true spirit of Christmas; people being helped by people other than me.","bank_num":null,"email":"fake@email.com","created_at":"2020-06-28T03:38:47.554Z","updated_at":"2020-06-28T03:38:47.554Z"},
-    messages: []
+    messages: [],
+    favorites: []
 }
 
 componentDidMount(){
@@ -41,6 +44,7 @@ componentDidMount(){
   fetch(purchasesUrl).then(res => res.json()).then(purchases => this.setState({ purchases }))
   fetch(messageUrl).then(res => res.json()).then(messages => this.setState({ messages }))
   fetch(repliesUrl).then(res => res.json()).then(replies => this.setState({ replies }))
+  fetch(favsUrl).then(res => res.json()).then(favorites => this.setState({ favorites }))
 }
 
 componentDidUpdate(){
@@ -137,6 +141,18 @@ newItemSubmit = (obj) => {
   }).then(res => res.json()).then(newItem => this.setState({ items: [...this.state.items, newItem] }))
 }
 
+favorite = (id) => {
+  const item = this.state.items.find(item => item.id === item)
+  fetch(favsUrl, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json'
+    },
+    body: JSON.stringify({ item_id: id, user_id: this.state.loggedInUser.id, item: item })
+  }).then(res => res.json()).then(favs => this.setState({ favorites: [...this.state.favorites, favs] }))
+}
+
 
   render() {
     let categories = this.state.items.map(item => item.category)
@@ -147,11 +163,12 @@ newItemSubmit = (obj) => {
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
          const thisID = parseInt(stuff.match.params.id)
-       return <ItemContainer addNewMessage={this.addNewMessage} messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
+       return <ItemContainer favorite={this.favorite} loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} addNewMessage={this.addNewMessage} messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
+       <Route path='/favorites' render={() => <MyFavs loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} users={this.state.users} /> } /> 
        <Route path='/profile/newitem' render={() => <NewItemForm /> }/>
        <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
-       <Route path='/profile' render={() => <ProfilePage newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
+       <Route path='/profile' render={() => <ProfilePage favorites={this.state.favorites} newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} reviews={this.state.reviews} /> } />
        <Route path='/' render={() => <TopOfApp index={this.state.itemIndex} items={this.state.items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
