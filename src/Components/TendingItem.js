@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 export class TendingItem extends Component {
      
@@ -6,6 +7,12 @@ export class TendingItem extends Component {
         if(obj != null){
             return <img src={obj.picture} /> 
         } 
+    }
+
+    displayItemId=(obj)=>{
+        if(obj != null){
+            return obj.id 
+        }
     }
 
     render() {
@@ -16,7 +23,7 @@ export class TendingItem extends Component {
             <div>
                 <h3>Trending Item...</h3>
                 <div className='ui medium circular image'>
-                {this.displayTrendingItem(item)}
+               <Link to={`/items/${this.displayItemId(item)}`}>{this.displayTrendingItem(item)}</Link>
                 </div>
             </div>
         )

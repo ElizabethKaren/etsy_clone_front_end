@@ -141,8 +141,9 @@ newItemSubmit = (obj) => {
   }).then(res => res.json()).then(newItem => this.setState({ items: [...this.state.items, newItem] }))
 }
 
-favorite = (id) => {
+favorite = (id,boolean) => {
   const item = this.state.items.find(item => item.id === item)
+  if (boolean === false){
   fetch(favsUrl, {
     method: 'POST',
     headers: {
@@ -151,6 +152,17 @@ favorite = (id) => {
     },
     body: JSON.stringify({ item_id: id, user_id: this.state.loggedInUser.id, item: item })
   }).then(res => res.json()).then(favs => this.setState({ favorites: [...this.state.favorites, favs] }))
+  } else {
+    let theseFavs = this.state.favorites.filter(favs => favs.user_id === this.state.loggedInUser.id)
+    let thisOne = theseFavs.find(fav => fav.item_id === id)
+    fetch('http://localhost:3000/favorites/' + thisOne.id, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        accept: 'application/json'
+      }
+    }).then(this.setState({ favorite: this.state.favorites.filter(fav => fav.id != thisOne.id )}))
+  }
 }
 
 
