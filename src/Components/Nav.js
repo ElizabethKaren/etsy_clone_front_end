@@ -24,6 +24,11 @@ export class Nav extends Component {
             <div className='ui item'>
                 <div className='item'>
                 <NavLink to='/'><img className='ui small circular image' src='https://seekvectorlogo.com/wp-content/uploads/2018/01/etsy-vector-logo-small.png' alt='etsy'/></NavLink>
+                <div className='ui fluid category search'>
+                    <div className='ui icon input'>
+                    <input className='search icon' placeholder='Search by Items or Category' value={this.props.searchBarInput} onChange={this.props.handleOnSearch}></input>  
+                    </div>
+                </div>
                 <h3 className='ui center aligned header'>
                     <NavLink to='/favorites'>My Favorites&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>
                <NavLink to='/profile'>{this.userLoggedIn(this.props.loggedInUser)}&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>

@@ -34,7 +34,8 @@ export class App extends Component {
     replies: [],
     loggedInUser: {"id":271,"first_name":"Elliot","last_name":"Will","password":"password1","bio":"That’s the true spirit of Christmas; people being helped by people other than me.","bank_num":null,"email":"fake@email.com","created_at":"2020-06-28T03:38:47.554Z","updated_at":"2020-06-28T03:38:47.554Z"},
     messages: [],
-    favorites: []
+    favorites: [],
+    searchBarInput: '',
 }
 
 componentDidMount(){
@@ -166,12 +167,16 @@ favorite = (id,boolean) => {
 }
 
 
+handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
+
   render() {
     let categories = this.state.items.map(item => item.category)
+    let items = this.state.items.filter(item => item.title.toLowerCase().includes(this.state.searchBarInput.toLowerCase()) || item.category.toLowerCase().includes(this.state.searchBarInput.toLowerCase()))
+     console.log(this.state.searchBarInput)
 
   return(
     <div className="App">
-      <Nav userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart} /> 
+      <Nav handleOnSearch={this.handleOnSearch} searchBarInput={this.state.searchBarInput} userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart} /> 
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
          const thisID = parseInt(stuff.match.params.id)
@@ -182,7 +187,7 @@ favorite = (id,boolean) => {
        <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
        <Route path='/profile' render={() => <ProfilePage favorites={this.state.favorites} newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} reviews={this.state.reviews} /> } />
-       <Route path='/' render={() => <TopOfApp index={this.state.itemIndex} items={this.state.items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
+       <Route path='/' render={() => <TopOfApp index={this.state.itemIndex} items={items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
     </div>
   )
