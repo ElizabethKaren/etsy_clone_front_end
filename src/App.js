@@ -30,7 +30,7 @@ export class App extends Component {
     cart: null,
     userSignedIn: false,
     replies: [],
-    loggedInUser: {"id":61,"first_name":"Preston","last_name":"Bayer","password":"password1","bio":"I don't trust the guy. I think he regifted, then he degifted, and now he's using an upstairs invite as a springboard to a Super bowl sex romp.","bank_num":null,"email":"fake@email.com","created_at":"2020-06-27T03:08:51.100Z","updated_at":"2020-06-27T03:08:51.100Z"},
+    loggedInUser: {"id":271,"first_name":"Elliot","last_name":"Will","password":"password1","bio":"That’s the true spirit of Christmas; people being helped by people other than me.","bank_num":null,"email":"fake@email.com","created_at":"2020-06-28T03:38:47.554Z","updated_at":"2020-06-28T03:38:47.554Z"},
     messages: []
 }
 

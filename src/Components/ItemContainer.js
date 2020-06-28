@@ -29,7 +29,7 @@ export class ItemContainer extends Component {
     
      handleMessage = () => {
          if(this.state.questionInput != ''){
-             const obj = {content: this.state.questionInput, item_id: this.props.thisID, seller_id: this.whosTheSeller() , buyer_id: 61}
+             const obj = {content: this.state.questionInput, item_id: this.props.thisID, seller_id: this.whosTheSeller() , buyer_id: 271}
              fetch('http://localhost:3000/messages', {
                 method: 'POST',
                 headers: {
