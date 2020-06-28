@@ -22,11 +22,12 @@ export class Nav extends Component {
 
         return (
             <div className='ui item'>
+                <div className='item'>
+                <img className='ui mini circular image' src='https://seekvectorlogo.com/wp-content/uploads/2018/01/etsy-vector-logo-small.png' alt='etsy'/> 
+                </div>
                 <h3 className='ui center aligned header'>
-               <NavLink to='/profile'>{this.userLoggedIn(this.props.loggedInUser)}</NavLink>
-               <br></br>
-               <NavLink to='/checkout'>{this.isCart(this.props.cart)}</NavLink>
-               <br></br>
+               <NavLink to='/profile'>{this.userLoggedIn(this.props.loggedInUser)}&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>
+               <NavLink to='/checkout'>{this.isCart(this.props.cart)}&nbsp;&nbsp;&nbsp;&nbsp;</NavLink>
                <NavLink to='/'>Browse Items</NavLink>
                </h3>
             </div>

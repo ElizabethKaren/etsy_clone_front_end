@@ -18,6 +18,8 @@ const repliesUrl = 'http://localhost:3000/replies'
 
 export class App extends Component {
   state = {
+    itemIndex: 0,
+    displayItem: null,
     items: [],
     reviews: [],
     purchases: [],
@@ -39,6 +41,18 @@ componentDidMount(){
   fetch(purchasesUrl).then(res => res.json()).then(purchases => this.setState({ purchases }))
   fetch(messageUrl).then(res => res.json()).then(messages => this.setState({ messages }))
   fetch(repliesUrl).then(res => res.json()).then(replies => this.setState({ replies }))
+}
+
+componentDidUpdate(){
+  setTimeout(this.changeTrendingItem, 9000)
+}
+
+changeTrendingItem = () => {
+  let newNum = this.state.itemIndex + 1
+  if(newNum === this.state.items.length){
+    newNum = 0 
+  }
+  this.setState({ itemIndex: newNum })
 }
 
 handleOnchange = (event) => {
@@ -114,7 +128,7 @@ addNewMessage = (obj) => this.setState({ messages: [...this.state.messages, obj 
        <Route path='/login' render={() => <SignIn verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
        <Route path='/profile' render={() => <ProfilePage replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} reviews={this.state.reviews} /> } />
-       <Route path='/' render={() => <TopOfApp items={this.state.items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
+       <Route path='/' render={() => <TopOfApp index={this.state.itemIndex} items={this.state.items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
     </div>
   )

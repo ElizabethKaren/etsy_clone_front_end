@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ItemDiv from './ItemDiv'
 import '../Styles/TopOfApp.css'
+import TrendingItem from './TendingItem'
 
 export class TopOfApp extends Component {
 
@@ -9,9 +10,9 @@ export class TopOfApp extends Component {
         let itemsShown = this.props.items.filter(item => item.category.includes(this.props.catagory))
         let cats = categories.filter((v, i, a) => a.indexOf(v) === i); 
         cats.sort((a,b)=> a > b ? 1 : - 1)
- 
         return (
             <div className='top-of-app-wrap'>
+                <TrendingItem items={this.props.items} index={this.props.index} /> 
                 <h1>Browse By Category</h1>
                 <select className='dropdown-wrapper' onChange={this.props.handleOnchange}>
                     <option>All</option>
