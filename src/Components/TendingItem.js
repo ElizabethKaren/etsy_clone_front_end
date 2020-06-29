@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import '../Styles/TrendingItem.css'
 
 export class TendingItem extends Component {
      
@@ -20,7 +21,7 @@ export class TendingItem extends Component {
         const item = items[this.props.index]
       
         return (
-            <div>
+            <div className='trendingBar'>
                 <h3>Trending Item...</h3>
                 <div className='ui medium circular image'>
                <Link to={`/items/${this.displayItemId(item)}`}>{this.displayTrendingItem(item)}</Link>

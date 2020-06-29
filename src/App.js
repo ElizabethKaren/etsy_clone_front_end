@@ -9,6 +9,8 @@ import Checkout from './Components/Checkout'
 import Nav from './Components/Nav'
 import SignIn from './Components/SignIn'
 import MyFavs from './Components/MyFavs'
+import Footer from './Components/Footer'
+import Another from './Components/Another'
 
 const itemsUrl = 'http://localhost:3000/items'
 const reviewsUrl = 'http://localhost:3000/reviews'
@@ -61,11 +63,8 @@ changeTrendingItem = () => {
 }
 
 handleOnchange = (event) => {
-    if(event.target.value === 'All'){
-        this.setState({ catagory: '' })
-    } else {
-    this.setState({catagory: event.target.value})
-    }
+  console.log(event.target.name)
+    this.setState({catagory: event.target.name})
 }
 
 findItem = (stuff) => {
@@ -176,6 +175,7 @@ handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
 
   return(
     <div className="App">
+      <Another handleOnSearch={this.handleOnSearch} searchBarInput={this.state.searchBarInput} userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart}/> 
       <Nav handleOnSearch={this.handleOnSearch} searchBarInput={this.state.searchBarInput} userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart} /> 
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
@@ -189,6 +189,7 @@ handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
        <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} reviews={this.state.reviews} /> } />
        <Route path='/' render={() => <TopOfApp index={this.state.itemIndex} items={items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
+       <Footer /> 
     </div>
   )
  }

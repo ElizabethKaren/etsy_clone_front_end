@@ -13,3 +13,8 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+.buttons{
+    width: 100%;
+    flex: cender; 
+    display: flex;
+}

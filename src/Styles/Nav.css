@@ -1,9 +1,36 @@
 .navbar{
-    vertical-align: baseline;
-    vertical-align: text-top;
-    vertical-align: text-bottom;
-    vertical-align: sub;
-    vertical-align: super;
-    display: inline;
-    font-weight: 600;
+   top: 0;
+   background-color: navy;
+   height: 25px; 
+   color: white; 
+}
+#main-logo{
+    width: 90px;
+    float: left; 
+    margin-left: 40px;
+
+}
+.searchBar{
+    position: absolute;
+    width: 70vw;
+    height: 50px;
+    top: 45px;
+    left: 140px;
+    border-radius: 30px;
+    font-size: 25px;
+    background-color: lightgray;
+    /* padding-left: -30px;  */
+}
+.searchBar:hover{
+background-color: white;
+box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.185);
+}
+.pad-top-80{
+    position: relative;
+    top: 80px;
+    width: 100%;
+}
+.navSpacing{
+    padding-right: 60px;
+    color: white;
 }
