@@ -5,7 +5,8 @@ export class NewItemForm extends Component {
         category: '',
         title: '',
         picture: '',
-        price: 0
+        price: 0,
+        materials: ''
     }
 
 
@@ -13,7 +14,7 @@ export class NewItemForm extends Component {
 
 
     addNewItem = () => {
-        const obj = {category: this.state.category, title: this.state.title, picture: this.state.picture, price: this.state.price, user_id: this.props.user_id}
+        const obj = {material: this.state.materials, category: this.state.category, title: this.state.title, picture: this.state.picture, price: this.state.price, user_id: this.props.user_id}
         this.props.newItemSubmit(obj)
         this.setState({
             category: '',
@@ -25,13 +26,19 @@ export class NewItemForm extends Component {
 
     render() {
         let cats = this.props.categories.filter((v, i, a) => a.indexOf(v) === i); 
+        let mats = this.props.materials.filter((v, i, a) => a.indexOf(v) === i); 
         cats.sort((a,b)=> a > b ? 1 : - 1)
+        mats.sort((a,b)=> a > b ? 1 : - 1)
 
         return (
             <div className='ui form'>
                 <p>Choose Category</p>
                 <select name='category' onChange={this.handleOnChange}>
                     {cats.map(cat => <option>{cat}</option>)}
+                </select>
+                <p>Choose Materials</p>
+                <select name='materials' onChange={this.handleOnChange}>
+                    {mats.map(mat => <option>{mat}</option>)}
                 </select>
                 <div className='fields'>
                 <br></br>
