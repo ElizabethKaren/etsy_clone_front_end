@@ -72,7 +72,7 @@ export class ItemContainer extends Component {
         return (
             <div className='ui celled grid'>
                <h1>{oneItem.title} : {oneItem.category} </h1>
-               <img className='ui fluid image' src={oneItem.picture} alt={oneItem.title} />
+               <img className='ui image' src={oneItem.picture} alt={oneItem.title} />
                <h1 onClick={() => this.props.favorite(this.props.thisID, this.isFavorite(thisItemsArray))}>{this.isFavorite(thisItemsArray) ? '❤️' : '♡' }</h1>
                <h4>${oneItem.price}</h4>
              <h4>{totalReviewsAmount === 0? 'Be the first to Review' : this.starsString(nowManyStars) }</h4>

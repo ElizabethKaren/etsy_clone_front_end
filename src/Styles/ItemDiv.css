@@ -1,11 +1,16 @@
+.item-container{
+    padding: 20px;
+}
 .item-wrapper {
  position: relative;
  float: left;
- width: 200px;
- padding: 13px;
+ width: 250px;
+ height: 400px;
 }
 .item-image{
     position: relative;
+    overflow: hidden;
+    height: 200px;
     width: 200px;
 }
 .item-title{

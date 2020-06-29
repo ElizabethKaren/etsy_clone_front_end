@@ -21,8 +21,8 @@ export class Nav extends Component {
     render() {
 
         return (
-            <div className='ui item'>
-                <div className='item'>
+            <div>
+                <div >
                 <NavLink to='/'><img id='main-logo' src='https://seekvectorlogo.com/wp-content/uploads/2018/01/etsy-vector-logo-small.png' alt='etsy'/></NavLink>
                 </div>
                     <div>

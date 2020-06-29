@@ -11,6 +11,7 @@ import SignIn from './Components/SignIn'
 import MyFavs from './Components/MyFavs'
 import Footer from './Components/Footer'
 import Another from './Components/Another'
+import UserStories from './Components/UserStories'
 
 const itemsUrl = 'http://localhost:3000/items'
 const reviewsUrl = 'http://localhost:3000/reviews'
@@ -19,6 +20,7 @@ const purchasesUrl = 'http://localhost:3000/purchases'
 const messageUrl = 'http://localhost:3000/messages'
 const repliesUrl = 'http://localhost:3000/replies'
 const favsUrl = 'http://localhost:3000/favorites'
+const userStoriesUrl = 'http://localhost:3000/stories'
 
 export class App extends Component {
   state = {
@@ -38,6 +40,7 @@ export class App extends Component {
     messages: [],
     favorites: [],
     searchBarInput: '',
+    stories: []
 }
 
 componentDidMount(){
@@ -48,6 +51,7 @@ componentDidMount(){
   fetch(messageUrl).then(res => res.json()).then(messages => this.setState({ messages }))
   fetch(repliesUrl).then(res => res.json()).then(replies => this.setState({ replies }))
   fetch(favsUrl).then(res => res.json()).then(favorites => this.setState({ favorites }))
+  fetch(userStoriesUrl).then(res => res.json()).then(stories => this.setState({ stories }))
 }
 
 componentDidUpdate(){
@@ -180,6 +184,7 @@ handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
        return <ItemContainer favorite={this.favorite} loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} addNewMessage={this.addNewMessage} messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
        <Route path='/favorites' render={() => <MyFavs loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} users={this.state.users} /> } /> 
+       <Route path='/stories' render={() => <UserStories stories={this.state.stories}/> }/>
        <Route path='/profile/newitem' render={() => <NewItemForm /> }/>
        <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
        <Route path='/profile' render={() => <ProfilePage favorites={this.state.favorites} newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 

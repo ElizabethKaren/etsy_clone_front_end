@@ -1,3 +1,9 @@
 .trendingBar{
-    margin-top: 100px;
+    position: relative;
+    display: inline-block;
+    width: 100vw;
+}
+#the-one-trending{
+  width: 280px;
+  height: 280px;
 }

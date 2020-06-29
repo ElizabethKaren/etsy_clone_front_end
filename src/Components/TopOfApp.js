@@ -43,7 +43,7 @@ export class TopOfApp extends Component {
                 <div>
                     {this.state.showDiv ? <MaterialsDiv materials={materials} filterMats={this.filterMats} /> : null }
                 </div>
-                <div className="items">
+                <div className="ui three  items">
                {itemsShown.map(item => <ItemDiv key={item.id} {...item} reviews={this.props.reviews} /> ) }
                 </div>
             </div>

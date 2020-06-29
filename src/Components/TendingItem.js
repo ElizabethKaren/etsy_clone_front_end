@@ -23,7 +23,7 @@ export class TendingItem extends Component {
         return (
             <div className='trendingBar'>
                 <h3>Trending Items...</h3>
-                <div className='ui medium image'>
+                <div className='ui medium image' id='the-one-trending'>
                <Link to={`/items/${this.displayItemId(item)}`}>{this.displayTrendingItem(item)}</Link>
                 </div>
                 <div className='ui medium image'>
