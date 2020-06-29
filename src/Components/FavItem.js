@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export class FavItem extends Component {
     render() {
-        console.log(this.props)
+     
         return (
             <div className="ui centered card row">
             <div className='card'>

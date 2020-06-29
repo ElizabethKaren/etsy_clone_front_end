@@ -15,6 +15,11 @@
 }
 .buttons{
     width: 100%;
-    flex: cender; 
+    position: relative;
     display: flex;
+    flex-direction: left;
+}
+.button{
+    position: relative;
+    height: 70px;
 }

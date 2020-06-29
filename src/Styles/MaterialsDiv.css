@@ -1,0 +1,17 @@
+.material-container{
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: left;  */
+
+}
+
+.dropdown{
+    position: absolute;
+    width: 70vw;
+    height: 50px;
+    top: 45px;
+    left: 140px;
+    border-radius: 30px;
+    font-size: 25px;
+    background-color: lightgray;
+}
