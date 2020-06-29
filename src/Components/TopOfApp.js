@@ -13,12 +13,15 @@ export class TopOfApp extends Component {
 
     showDiv = (event) => {
         this.props.handleOnchange(event)
+        this.revertOptions()
         this.setState({ showDiv: true, material: '' })
     }
     
     hideMaterials = () => this.setState({ showDiv: false })
 
     filterMats = event => this.setState({ material: event.target.value })
+
+    revertOptions = () => 'All'
 
     render() {
         let categories = this.props.categories
@@ -40,7 +43,7 @@ export class TopOfApp extends Component {
                     {cats.map(cat => <button className='small ui button' name={cat} key={cat.id}>{cat}</button>)}
                 </div>
                 <div>
-                    {this.state.showDiv ? <MaterialsDiv materials={materials} filterMats={this.filterMats} /> : null }
+                    {this.state.showDiv ? <MaterialsDiv materials={materials} revertOptions={this.revertOptions} filterMats={this.filterMats} /> : null }
                 </div>
                 <div className="ui three  items">
                {itemsShown.map(item => <ItemDiv key={item.id} {...item} reviews={this.props.reviews} /> ) }

@@ -144,7 +144,7 @@ newItemSubmit = (obj) => {
 
 favorite = (id,boolean) => {
   const item = this.state.items.find(item => item.id === id)
-  if (boolean === false){
+  if (boolean == false){
   fetch(favsUrl, {
     method: 'POST',
     headers: {
@@ -162,7 +162,8 @@ favorite = (id,boolean) => {
         'content-type': 'application/json',
         accept: 'application/json'
       }
-    }).then(this.setState({ favorite: this.state.favorites.filter(fav => fav.id !== thisOne.id )}))
+    })
+    this.setState({ favorites: this.state.favorites.filter(fav => fav.id !== thisOne.id )})
   }
 }
 

@@ -21,6 +21,7 @@ export class Another extends Component {
       }
 
     render() {
+        if(!this.props.loggedInUser) return <div className='navbar'> <NavLink to='/login'>Log In</NavLink></div>
         return (
             <div className='navbar'>
                  <NavLink className='navSpacing' to='/favorites'>My Favorites</NavLink>
