@@ -45,7 +45,6 @@ export class ItemContainer extends Component {
 
     isFavorite = (array) => {
         let thisFav =  array.find(ar=> ar.user_id === this.props.loggedInUser.id)
-        console.log(thisFav)
         if(thisFav){
             return thisFav 
         } else {
@@ -57,6 +56,7 @@ export class ItemContainer extends Component {
     render() {
         const id = this.props.thisID 
         const oneItem = this.props.items.find(item => item.id === id)
+        if(!oneItem) return <div>Loading...</div>
         const theseReviews = this.props.reviews.filter(review => review.item_id === oneItem.id)
         let totalReviewsAmount = theseReviews.length
         let justRating = theseReviews.map(review => review.rating)
@@ -66,9 +66,6 @@ export class ItemContainer extends Component {
         let howManyQ = questions.length
         let thisItemsArray = this.props.favorites.filter(fav => fav.item_id === id)
         let thisUser = thisItemsArray.find(item => item.user_id === this.props.loggedInUser.id)
-
-        console.log(this.isFavorite(thisItemsArray))
-
         return (
             <div className='ui celled grid'>
                <h1>{oneItem.title} : {oneItem.category} </h1>

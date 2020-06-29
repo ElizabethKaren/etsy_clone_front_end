@@ -27,7 +27,6 @@ export class TopOfApp extends Component {
         let itemsShown = itemsDisplay.filter(item => item.material.includes(this.state.material))
         let cats = categories.filter((v, i, a) => a.indexOf(v) === i); 
         cats.sort((a,b)=> a > b ? 1 : - 1)
-        console.log(this.state.material)
         return (
             <div className='top-of-app-wrap'>
                 <TrendingItem items={this.props.items} index={this.props.index} hideMaterials={this.hideMaterials}/> 

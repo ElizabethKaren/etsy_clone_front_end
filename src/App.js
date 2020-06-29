@@ -143,7 +143,7 @@ newItemSubmit = (obj) => {
 }
 
 favorite = (id,boolean) => {
-  const item = this.state.items.find(item => item.id === item)
+  const item = this.state.items.find(item => item.id === id)
   if (boolean === false){
   fetch(favsUrl, {
     method: 'POST',
@@ -152,7 +152,7 @@ favorite = (id,boolean) => {
       accept: 'application/json'
     },
     body: JSON.stringify({ item_id: id, user_id: this.state.loggedInUser.id, item: item })
-  }).then(res => res.json()).then(favs => this.setState({ favorites: [...this.state.favorites, favs] }))
+  }).then(res => res.json()).then(favs => this.setState({ favorites: [...this.state.favorites, {...favs, item}] }))
   } else {
     let theseFavs = this.state.favorites.filter(favs => favs.user_id === this.state.loggedInUser.id)
     let thisOne = theseFavs.find(fav => fav.item_id === id)
@@ -162,7 +162,7 @@ favorite = (id,boolean) => {
         'content-type': 'application/json',
         accept: 'application/json'
       }
-    }).then(this.setState({ favorite: this.state.favorites.filter(fav => fav.id != thisOne.id )}))
+    }).then(this.setState({ favorite: this.state.favorites.filter(fav => fav.id !== thisOne.id )}))
   }
 }
 
