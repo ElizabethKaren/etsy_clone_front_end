@@ -12,7 +12,7 @@ export class MaterialsDiv extends Component {
         return (
             <div  className='buttons'> 
                 <div onClick={this.props.filterMats}>
-                    <h5>Materials</h5>
+                    <h5>Material</h5>
                     <button className='small ui button' name='' value=''>All</button>
                  {mats.map((mat, index) => <button className='small ui button' value={mat} key={index}>{mat}</button>)}
                  </div>
