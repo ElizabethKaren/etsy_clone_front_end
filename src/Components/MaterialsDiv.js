@@ -10,11 +10,12 @@ export class MaterialsDiv extends Component {
 
 
         return (
-            <div className='dropdown-position'> 
-                <select className='dropdown' onChange={this.props.filterMats}>
-                    <option name='' value=''>All</option>
-                 {mats.map((mat, index) => <option value={mat} key={index}>{mat}</option>)}
-                 </select>
+            <div  className='buttons'> 
+                <div onClick={this.props.filterMats}>
+                    <h5>Materials</h5>
+                    <button className='small ui button' name='' value=''>All</button>
+                 {mats.map((mat, index) => <button className='small ui button' value={mat} key={index}>{mat}</button>)}
+                 </div>
             </div>
         )
     }
