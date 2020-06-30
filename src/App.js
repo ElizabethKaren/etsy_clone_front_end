@@ -14,6 +14,8 @@ import Another from './Components/Another'
 import UserStories from './Components/UserStories'
 import MyMessages from './Components/MyMessages';
 import MyStats from './Components/MyStats'
+import EditYourProf from './Components/EditYourProf'
+import TellMyStory from './Components/TellMyStory'
 
 const itemsUrl = 'http://localhost:3000/items'
 const reviewsUrl = 'http://localhost:3000/reviews'
@@ -169,8 +171,42 @@ favorite = (id,boolean) => {
   }
 }
 
+cartCheckout = () => {
+this.state.cart.forEach(item => 
+  fetch(purchasesUrl,{
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json'
+    },
+    body: JSON.stringify({ item_id: item.id, user_id: this.state.loggedInUser.id })
+  }).then(res => res.json()).then(newPurch => this.setState({ purchases: [...this.state.purchases, newPurch] }) )
+  )
+  this.setState({ cart: [] })
+}
+
+updatePrice = (money, id) => {
+  let itemsArray = this.state.items 
+  let updatedItem = itemsArray.find(item => item.id === id)
+  let index = itemsArray.indexOf(updatedItem)
+  itemsArray[index].price = money 
+  fetch(itemsUrl + '/' + id, {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+      accept: 'application/json'
+    },
+    body: JSON.stringify({ price: money })
+  }).then(res => res.json()).then(item => this.setState({ items: itemsArray }))
+}
+
 
 handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
+
+handleDeleteUser = (id) => this.setState({ users: this.state.users.filter(user => user.id !== id), loggedInUser: null })
+
+
+newStory = event => console.log(event.target)
 
   render() {
     let materials = this.state.items.map(item => item.material)
@@ -188,12 +224,14 @@ handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
        } }/> 
        <Route path='/favorites' render={() => <MyFavs loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} users={this.state.users} /> } /> 
        <Route path='/stories' render={() => <UserStories stories={this.state.stories}/> }/>
+       <Route path='/profile/tellmystory' render={() => <TellMyStory loggedInUser={this.state.loggedInUser} newStory={this.newStory}/> }/>
+       <Route path='/profile/edit' render={() => <EditYourProf handleDeleteUser={this.handleDeleteUser} updatePrice={this.updatePrice} loggedInUser={this.state.loggedInUser} items={this.state.items} /> }/>
        <Route path='/profile/stats' render={() => <MyStats loggedInUser={this.state.loggedInUser} purchases={this.state.purchases} />} /> 
        <Route path='/profile/messages' render={() => <MyMessages loggedInUser={this.state.loggedInUser} messages={this.state.messages} />} /> 
        <Route path='/profile/newitem' render={() => <NewItemForm materials={materials} /> }/>
        <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
        <Route path='/profile' render={() => <ProfilePage materials={materials} favorites={this.state.favorites} newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
-       <Route path='/checkout' render={()=> <Checkout cart={this.state.cart} reviews={this.state.reviews} /> } />
+       <Route path='/checkout' render={()=> <Checkout cartCheckout={this.cartCheckout} cart={this.state.cart} reviews={this.state.reviews} /> } />
        <Route path='/' render={() => <TopOfApp materials={materials} categories={categories} index={this.state.itemIndex} items={items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
        <Footer /> 

@@ -7,7 +7,10 @@ export class Checkout extends Component {
         orderComplete: false 
     }
 
-    completeOrder = () => this.setState({ orderComplete: true })
+    completeOrder = () => {
+        this.setState({ orderComplete: true }) 
+        this.props.cartCheckout()
+    }
 
     render() {
         return (

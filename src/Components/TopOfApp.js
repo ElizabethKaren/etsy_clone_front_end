@@ -33,11 +33,6 @@ export class TopOfApp extends Component {
         return (
             <div className='top-of-app-wrap'>
                 <TrendingItem items={this.props.items} index={this.props.index} hideMaterials={this.hideMaterials}/> 
-                {/* <h1>Browse By Category</h1>
-                <select className='dropdown-wrapper' onChange={this.props.handleOnchange}>
-                    <option>All</option>
-                    {cats.map(cat => <option key={cat.id}>{cat}</option>)}
-                </select> */}
                 <div className='buttons' onClick={this.showDiv}>
                     <button className='small ui button' name='' onClick={this.hideMaterials}>All</button>
                     {cats.map(cat => <button className='small ui button' name={cat} key={cat.id}>{cat}</button>)}

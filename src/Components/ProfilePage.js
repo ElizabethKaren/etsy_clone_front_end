@@ -18,10 +18,7 @@ export class ProfilePage extends Component {
     handleOnClick = () => this.setState({ seeMessages: !this.state.seeMessages })
 
     render() {
- 
-        const yourPurchases = this.props.purchases.filter(purch => purch.user_id === this.props.loggedInUser.id)
         const yourItems = this.props.items.filter(item => item.user_id === this.props.loggedInUser.id) 
-        const yourMessages = this.props.messages.filter(mes => mes.seller_id === this.props.loggedInUser.id)
         
         return (
             <div>
@@ -30,6 +27,8 @@ export class ProfilePage extends Component {
                 </div>
                 <div className='your-sale-items'>
                 <h3 className="right floated">Your Items For Sale</h3>
+                <Link to='/profile/tellmystory'><button className="ui tiny button" tabindex="0">Tell My Story</button></Link>
+                <Link to='/profile/edit'><button className="ui tiny button" tabindex="0">Edit Your Profile</button></Link>
                 <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
                 <Link to='/profile/stats'><button className="ui tiny button" tabindex="0">My Sales Statistics</button></Link>
               <button className="ui tiny button" tabindex="0" onClick={this.props.handleSignOut}>Sign Out</button>
@@ -38,8 +37,6 @@ export class ProfilePage extends Component {
                 {yourItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item} /> )}
                 </div>
               <div>
-               {/* <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
-              <button className="ui tiny button" tabindex="0" onClick={this.props.handleSignOut}>Sign Out</button> */}
               </div>
             </div>
         )
