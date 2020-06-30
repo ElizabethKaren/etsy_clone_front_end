@@ -12,6 +12,7 @@ import MyFavs from './Components/MyFavs'
 import Footer from './Components/Footer'
 import Another from './Components/Another'
 import UserStories from './Components/UserStories'
+import MyMessages from './Components/MyMessages';
 
 const itemsUrl = 'http://localhost:3000/items'
 const reviewsUrl = 'http://localhost:3000/reviews'
@@ -186,6 +187,7 @@ handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
        } }/> 
        <Route path='/favorites' render={() => <MyFavs loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} users={this.state.users} /> } /> 
        <Route path='/stories' render={() => <UserStories stories={this.state.stories}/> }/>
+       <Route path='/profile/messages' render={() => <MyMessages loggedInUser={this.state.loggedInUser} messages={this.state.messages} />} /> 
        <Route path='/profile/newitem' render={() => <NewItemForm materials={materials} /> }/>
        <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
        <Route path='/profile' render={() => <ProfilePage materials={materials} favorites={this.state.favorites} newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
