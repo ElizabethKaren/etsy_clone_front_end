@@ -30,13 +30,16 @@ export class ProfilePage extends Component {
                 </div>
                 <div className='your-sale-items'>
                 <h3 className="right floated">Your Items For Sale</h3>
+                <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
+                <Link to='/profile/stats'><button className="ui tiny button" tabindex="0">My Sales Statistics</button></Link>
+              <button className="ui tiny button" tabindex="0" onClick={this.props.handleSignOut}>Sign Out</button>
                 <button className="ui button" tabindex="0" onClick={this.click}>Add New Item</button>
                 {this.state.formVisable ? <NewItemForm materials={this.props.materials} newItemSubmit={this.props.newItemSubmit} user_id={this.props.loggedInUser.id} categories={this.props.categories} /> : null }
                 {yourItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item} /> )}
                 </div>
-              <div className='card'>
-               <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
-              <button className="ui tiny button" tabindex="0" onClick={this.props.handleSignOut}>Sign Out</button>
+              <div>
+               {/* <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
+              <button className="ui tiny button" tabindex="0" onClick={this.props.handleSignOut}>Sign Out</button> */}
               </div>
             </div>
         )
