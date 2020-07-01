@@ -26,12 +26,12 @@ export class ProfilePage extends Component {
                 <div className='message-wrap'>
                 </div>
                 <div className='your-sale-items'>
-                <h3 className="right floated">Your Items For Sale</h3>
                 <Link to='/profile/tellmystory'><button className="ui tiny button" tabindex="0">Tell My Story</button></Link>
                 <Link to='/profile/edit'><button className="ui tiny button" tabindex="0">Edit Your Profile</button></Link>
                 <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
                 <Link to='/profile/stats'><button className="ui tiny button" tabindex="0">My Sales Statistics</button></Link>
               <button className="ui tiny button" tabindex="0" onClick={this.props.handleSignOut}>Sign Out</button>
+              <h3 className="right floated">Your Items For Sale</h3>
                 <button className="ui button" tabindex="0" onClick={this.click}>Add New Item</button>
                 {this.state.formVisable ? <NewItemForm materials={this.props.materials} newItemSubmit={this.props.newItemSubmit} user_id={this.props.loggedInUser.id} categories={this.props.categories} /> : null }
                 {yourItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item} /> )}

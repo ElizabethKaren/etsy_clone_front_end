@@ -21,9 +21,11 @@ export class EditYourProf extends Component {
         if (!yourItems) return <div> Loading ... </div>
         return (
             <div className='items-con'>
-                  <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
+                <Link to='/profile/tellmystory'><button className="ui tiny button" tabindex="0">Tell My Story</button></Link>
+                <Link to='/profile/edit'><button className="ui tiny button" tabindex="0">Edit Your Profile</button></Link>
+                <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
+                <Link to='/profile/stats'><button className="ui tiny button" tabindex="0">My Sales Statistics</button></Link>
                 <Link to='/profile'><button className="ui tiny button" tabindex="0">Profile</button></Link>
-                <Link to='/profile/stats'><button className="ui tiny button" tabindex="0">See My Stats</button></Link>
                 {/* <h2>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h2>
                 <h4>Bio: {this.state.newBioInputVisable ? <input name='updatedBio' onChange={this.handleOnChange} placeholder={this.props.loggedInUser.bio}></input> : this.props.loggedInUser.bio}</h4>
                 <button onClick={this.click} name='newBioInputVisable' className='ui tiny button'>Update Bio</button>

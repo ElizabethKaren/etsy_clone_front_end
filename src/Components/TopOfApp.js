@@ -34,7 +34,6 @@ export class TopOfApp extends Component {
             <div className='top-of-app-wrap'>
                 <TrendingItem items={this.props.items} index={this.props.index} hideMaterials={this.hideMaterials}/> 
                 <div className='buttons' onClick={this.showDiv}>
-                      <h5>Department</h5>
                     <button className='small ui button' name='' onClick={this.hideMaterials}>All</button>
                     {cats.map(cat => <button className='small ui button' name={cat} key={cat.id}>{cat}</button>)}
                 </div>
