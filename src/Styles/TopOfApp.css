@@ -13,18 +13,39 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 60px;
-    padding: 20px;
+    margin-top: -10px;
 }
 .buttons{
     width: 100%;
     position: relative;
     display: inline-block;
     flex-direction: left;
-    background-color: rgb(226, 224, 224);
+    /* background-color: rgb(226, 224, 224); */
+    background-color: #DAE5F3;
+    margin-top: -10px;
 
 }
 .button{
     position: relative;
     height: 70px;
+}
+#pink-color{
+    background-color: #F8EBE6;
+}
+.blue-background{
+    background-color: #232345;
+}
+.small-button{
+    width: fit-content;
+    padding: 5px 10px 5px 10px;
+    background-color: #DAE5F3;
+    border: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+}
+.small-button:hover{
+  font-size: 16px;
+}
+.add-top{
+    margin-top: 100px;
 }

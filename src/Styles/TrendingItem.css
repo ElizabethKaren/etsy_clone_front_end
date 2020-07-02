@@ -2,8 +2,10 @@
     position: relative;
     display: inline-block;
     width: 100vw;
+    top: 40px;
 }
 #the-one-trending{
   width: 280px;
   height: 280px;
+
 }

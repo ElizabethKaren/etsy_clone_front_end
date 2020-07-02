@@ -4,7 +4,8 @@ import '../Styles/Message.css'
 export class MessageAndResponse extends Component {
     state = {
         responseInput: '',
-        responded: false 
+        responded: false,
+        alreadyAnswerd: false 
     }
 
     handleOnChange = event => this.setState({ responseInput: event.target.value })
@@ -24,13 +25,14 @@ export class MessageAndResponse extends Component {
 
     render() {
         if(this.state.responded) return <div className='mess-wrap'>Thank you for your response </div>
-        console.log(this.props)
-
+        const reply = this.props.replies.find(reply => reply.message_id === this.props.id)
+        if(reply) return null
         return (
             <div className='mess-wrap'>
                 <h4>{this.props.content}</h4>
                 <input className='input' onChange={this.handleOnChange} value={this.state.responseInput} placeholder='Respond to potenial buyer...'></input>
                 <br></br><br></br><br></br>
+                {/* {reply ? reply.content : null } */}
                 <button className='ui tiny button' onClick={this.submitResponse}>Send Response</button>
             </div>
         )

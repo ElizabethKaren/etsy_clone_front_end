@@ -13,7 +13,7 @@ export class MaterialsDiv extends Component {
             <div  className='buttons'> 
                 <div onClick={this.props.filterMats}>
                     {/* <button className='small ui button' name='' value=''>All</button> */}
-                 {mats.map((mat, index) => <button className='small ui button' value={mat} key={index}>{mat}</button>)}
+                 {mats.map((mat, index) => <button className='small-button' value={mat} key={index}>{mat}</button>)}
                  </div>
             </div>
         )

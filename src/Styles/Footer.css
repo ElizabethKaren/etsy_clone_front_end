@@ -1,8 +1,9 @@
 .footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
-    background-color: navy;
-    height: 25px;
+    background-color:#232345;
+    height: 70px;
     color: white;
+    top: -10px;
   }

@@ -5,7 +5,7 @@ export class Sale extends Component {
     render() {
         let sortedPrices = this.props.prices.sort((a,b) => a < b ? 1 : -1 )
         let highest = sortedPrices[0]
-        let color = this.props.item.price === highest ? 'red' : 'blue' 
+        let color = this.props.item.price === highest ? '#232345' : '#EF5809' 
         console.log(highest)
         return (
             <div className='stats-container'>

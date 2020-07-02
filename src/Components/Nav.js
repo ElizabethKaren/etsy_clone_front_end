@@ -29,6 +29,7 @@ export class Nav extends Component {
                     <div>
                     <input className='searchBar' placeholder='   Search by Items or Category' value={this.props.searchBarInput} onChange={this.props.handleOnSearch}></input>  
                     </div>
+                    
                 {/* <h3 className='ui center aligned header pad-top-80'>
                     <NavLink className='navSpacing' to='/favorites'>My Favorites</NavLink>
                <NavLink className='navSpacing' to='/profile'>{this.userLoggedIn(this.props.loggedInUser)}</NavLink>

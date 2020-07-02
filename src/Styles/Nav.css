@@ -10,8 +10,8 @@
    display: inline-block;
    width: 100%;
    top: 0;
-   background-color: navy;
-   height: 25px; 
+   background-color: #232345;
+   padding: 20px;
    color: white; 
 }
 #main-logo{
@@ -29,7 +29,7 @@
     left: 30px;
     border-radius: 30px;
     font-size: 15px;
-    background-color: lightgray;
+    background-color: #DAE5F3;
     /* padding-left: -30px;  */
 }
 .searchBar:hover{

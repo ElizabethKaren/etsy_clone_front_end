@@ -16,7 +16,9 @@ export class MyStats extends Component {
                 <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
                 <Link to='/profile/stats'><button className="ui tiny button" tabindex="0">My Sales Statistics</button></Link>
                 <Link to='/profile'><button className="ui tiny button" tabindex="0">Profile</button></Link>
+                <div className='sales-container'>
                 {sales.map(sale => <Sale prices={prices} {...sale} key={sale.id}/> )}
+                </div>
                 {/* {sales.map(sale => <div className='sale'>{sale.item.title} sold for ${sale.item.price} <img className='ui small centered image' src={sale.item.picture} alt={sale.item.title} /></div>)} */}
             </div>
         )
