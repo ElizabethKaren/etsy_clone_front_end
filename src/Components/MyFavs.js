@@ -10,7 +10,7 @@ export class MyFavs extends Component {
         return (
             <div className='favs-div'>
                 <h2>Your Favorites {this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h2>
-                <div >
+                <div className="card-holer">
                 {myFavs.map(fav => <FavItem key={fav.id} {...fav} />)}
                 </div>
             </div>

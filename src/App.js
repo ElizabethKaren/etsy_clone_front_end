@@ -64,7 +64,7 @@ componentDidUpdate(){
 
 changeTrendingItem = () => {
   let newNum = this.state.itemIndex + 1
-  if(newNum === this.state.items.length){
+  if(newNum > this.state.items.length){
     newNum = 0 
   }
   this.setState({ itemIndex: newNum })
@@ -212,7 +212,7 @@ newStory = event => console.log(event.target)
     let materials = this.state.items.map(item => item.material)
     let categories = this.state.items.map(item => item.category)
     let items = this.state.items.filter(item => item.title.toLowerCase().includes(this.state.searchBarInput.toLowerCase()) || item.category.toLowerCase().includes(this.state.searchBarInput.toLowerCase()))
-
+    console.log(this.state.itemIndex, this.state.items.length)
   return(
     <div className="App">
       <Another handleOnSearch={this.handleOnSearch} searchBarInput={this.state.searchBarInput} userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart}/> 

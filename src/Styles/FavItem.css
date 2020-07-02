@@ -1,6 +1,12 @@
+.card-holer{
+    flex-direction: left;
+    padding-left: 100px;
+    padding-bottom: 90px;
+}
 .favs-div{
-    padding-top: 150px;
+    padding-top: 130px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(207, 102, 16);
+    padding-bottom: 100px;
 
 }

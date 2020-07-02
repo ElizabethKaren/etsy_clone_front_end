@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
 import MessageDiv from './MessageDiv'
+import '../Styles/ItemContainer.css'
 
 export class ItemContainer extends Component {
     state = {
@@ -67,6 +68,7 @@ export class ItemContainer extends Component {
         let thisItemsArray = this.props.favorites.filter(fav => fav.item_id === id)
         let thisUser = thisItemsArray.find(item => item.user_id === this.props.loggedInUser.id)
         return (
+            <div className='div-wrap'>
             <div className='ui celled grid'>
                <h1>{oneItem.title} : {oneItem.category} </h1>
                <img className='ui image' src={oneItem.picture} alt={oneItem.title} />
@@ -91,6 +93,7 @@ export class ItemContainer extends Component {
               {questions.map(mes => <MessageDiv users={this.props.users} replies={this.props.replies} key={mes.id} {...mes} /> )}
               </div>
               </div>
+            </div>
             </div>
         )
     }

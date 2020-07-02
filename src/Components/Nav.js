@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import '../Styles/Nav.css'
+import FlatsyLogo from '../Styles/images/flatsylogo.png'
 
 export class Nav extends Component {
     isCart = (array) => {
@@ -23,7 +24,7 @@ export class Nav extends Component {
         return (
             <div>
                 <div >
-                <NavLink to='/'><img id='main-logo' src='https://seekvectorlogo.com/wp-content/uploads/2018/01/etsy-vector-logo-small.png' alt='etsy'/></NavLink>
+                <NavLink to='/'><img id='main-logo' src={FlatsyLogo} alt='flatsy'/></NavLink>
                 </div>
                     <div>
                     <input className='searchBar' placeholder='   Search by Items or Category' value={this.props.searchBarInput} onChange={this.props.handleOnSearch}></input>  
