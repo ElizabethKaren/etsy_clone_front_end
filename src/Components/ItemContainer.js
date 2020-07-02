@@ -3,6 +3,7 @@ import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
 import MessageDiv from './MessageDiv'
 import '../Styles/ItemContainer.css'
+import Footer from './Footer'
 
 export class ItemContainer extends Component {
     state = {
