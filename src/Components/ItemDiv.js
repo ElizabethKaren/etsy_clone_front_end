@@ -17,12 +17,12 @@ export class ItemDiv extends Component {
         let nowManyStars = total/totalReviewsAmount
   
         return (
-            <div className='item-container'>
-                <div className='item-wrapper'>
-                <p className='item-title'>{this.props.title}: {this.props.category} </p>
+            <div >
+                <div className='each-item-div'>
                 <Link to={`/items/${this.props.id}`} >
                 <img className='item-image' src={this.props.picture} alt={this.props.title}/> 
                 </Link>
+                <p >{this.props.title}: {this.props.category} </p>
                 <p>${this.props.price}</p>
                 <p>{totalReviewsAmount === 0? 'Be the first to Review' : this.starsString(nowManyStars) }</p>
                 </div>
