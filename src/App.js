@@ -25,6 +25,7 @@ const messageUrl = 'http://localhost:3000/messages'
 const repliesUrl = 'http://localhost:3000/replies'
 const favsUrl = 'http://localhost:3000/favorites'
 const userStoriesUrl = 'http://localhost:3000/stories'
+const historyUrl = 'http://localhost:3000/histories'
 
 export class App extends Component {
   state = {
@@ -44,7 +45,8 @@ export class App extends Component {
     messages: [],
     favorites: [],
     searchBarInput: '',
-    stories: []
+    stories: [],
+    clicks: []
 }
 
 componentDidMount(){
@@ -56,6 +58,7 @@ componentDidMount(){
   fetch(repliesUrl).then(res => res.json()).then(replies => this.setState({ replies }))
   fetch(favsUrl).then(res => res.json()).then(favorites => this.setState({ favorites }))
   fetch(userStoriesUrl).then(res => res.json()).then(stories => this.setState({ stories }))
+  fetch(historyUrl).then(res => res.json()).then(clicks => this.setState({ clicks }))
 }
 
 componentDidUpdate(){
@@ -226,7 +229,7 @@ newStory = event => console.log(event.target)
        <Route path='/stories' render={() => <UserStories stories={this.state.stories}/> }/>
        <Route path='/profile/tellmystory' render={() => <TellMyStory loggedInUser={this.state.loggedInUser} newStory={this.newStory}/> }/>
        <Route path='/profile/edit' render={() => <EditYourProf handleDeleteUser={this.handleDeleteUser} updatePrice={this.updatePrice} loggedInUser={this.state.loggedInUser} items={this.state.items} /> }/>
-       <Route path='/profile/stats' render={() => <MyStats loggedInUser={this.state.loggedInUser} purchases={this.state.purchases} />} /> 
+       <Route path='/profile/stats' render={() => <MyStats clicks={this.state.clicks} loggedInUser={this.state.loggedInUser} purchases={this.state.purchases} />} /> 
        <Route path='/profile/messages' render={() => <MyMessages replies={this.state.replies} loggedInUser={this.state.loggedInUser} messages={this.state.messages} />} /> 
        <Route path='/profile/newitem' render={() => <NewItemForm materials={materials} /> }/>
        <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 

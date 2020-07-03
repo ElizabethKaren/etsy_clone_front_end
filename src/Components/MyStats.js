@@ -3,12 +3,22 @@ import '../Styles/Stats.css'
 import { Link } from 'react-router-dom'
 import '../Styles/TellMyStory.css'
 import Sale from './Sale'
+import View from './View'
 
 export class MyStats extends Component {
+    state = {
+        viewSales: false  
+    }
+
+    handleOnchange = () => this.setState({ viewSales: !this.state.viewSales })
+
     render() {
         let sales = this.props.purchases.filter(perch => perch.user_id === this.props.loggedInUser.id)
         let prices = sales.map(sale => sale.item.price)
-
+        if (!this.props.clicks) return <div>Loading...</div>
+        let thisClick = this.props.clicks.filter(click => click.item.user_id === this.props.loggedInUser.id)
+        let theseClicks = thisClick.sort((a,b) => a < b ? 1 : -1 )
+     
         return (
             <div className='your-story-submission'>
                 <Link to='/profile/tellmystory'><button className="ui tiny button" tabindex="0">Tell My Story</button></Link>
@@ -17,7 +27,15 @@ export class MyStats extends Component {
                 <Link to='/profile/stats'><button className="ui tiny button" tabindex="0">My Sales Statistics</button></Link>
                 <Link to='/profile'><button className="ui tiny button" tabindex="0">Profile</button></Link>
                 <div className='sales-container'>
-                {sales.map(sale => <Sale prices={prices} {...sale} key={sale.id}/> )}
+                    <label>See My Clicks</label>
+                    <input onClick={this.handleOnchange} name='true' type='radio' value='true' checked={this.state.viewSales}></input>
+                    <br></br>
+                    <label>See My Sales</label>
+                    <input onClick={this.handleOnchange} name='false' type='radio' value='false' checked={!this.state.viewSales}></input>
+                    <br></br>
+                    {this.state.viewSales
+                    ? theseClicks.map(click => <View clicks={this.props.clicks} key={click.id} {...click} /> )
+                    : sales.map(sale => <Sale prices={prices} {...sale} key={sale.id}/> )}
                 </div>
                 {/* {sales.map(sale => <div className='sale'>{sale.item.title} sold for ${sale.item.price} <img className='ui small centered image' src={sale.item.picture} alt={sale.item.title} /></div>)} */}
             </div>

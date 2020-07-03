@@ -4,7 +4,7 @@ import '../Styles/FavItem.css'
 
 export class FavItem extends Component {
     render() {
-     console.log(this.props.item)
+     
         return (
             <div className="card-holer">
             <div className='ui card'>
