@@ -10,6 +10,8 @@ export class MyMessages extends Component {
         if (!this.props.messages) return <div>Loading</div>
         let messages = this.props.messages.filter(mes => mes.seller_id === this.props.loggedInUser.id)
         return (
+            <div>
+                <h1 id='homePageName'>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h1>
             <div className='messages-container'>
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1440 50" preserveAspectRatio="xMaxYMid" aria-hidden="true" focusable="false">
@@ -18,11 +20,11 @@ export class MyMessages extends Component {
                 </svg>
                 </div>
                 <div className='prof-buttons-container'>
-                 <Link to='/profile/tellmystory'><button className="ui tiny button" tabindex="0">Tell My Story</button></Link>
-                <Link to='/profile/edit'><button className="ui tiny button" tabindex="0">Edit Your Profile</button></Link>
-                <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
-                <Link to='/profile/stats'><button className="ui tiny button" tabindex="0">My Sales Statistics</button></Link>
-                <Link to='/profile'><button className="ui tiny button" tabindex="0">Profile</button></Link>
+                 <Link to='/profile/tellmystory'><button className="ui tiny button" id='buttons' tabindex="0">Tell My Story</button></Link>
+                <Link to='/profile/edit'><button className="ui tiny button" id='buttons' tabindex="0">Edit Your Profile</button></Link>
+                <Link to='/profile/messages'><button className="ui tiny button" id='buttons' tabindex="0">Messages</button></Link>
+                <Link to='/profile/stats'><button className="ui tiny button" id='buttons' tabindex="0">My Sales Statistics</button></Link>
+                <Link to='/profile'><button className="ui tiny button" id='buttons' tabindex="0">Profile</button></Link>
                 </div>
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 20 1440 80" preserveAspectRatio="xMaxYMid" aria-hidden="true" focusable="false">
@@ -45,6 +47,7 @@ export class MyMessages extends Component {
                     <path d="M31.7 12.7 C31.9 12.7 32.1 12.6 32.3 12.6 C1808.2 -82.3 1805.2 -81.2 1801.9 -80.4 1802.1 -80.3 1802.3 -80.2 1802.5 -80.1 1805.1 -76.8 1806.7 -73.7 1802 -71.3 1789.9 -64.9 1783.9 -57.6 1784.8 -49.1 1785.6 -42.5 1792.3 -35.2 1785.6 -29.3 1783.5 -28.7 1781.2 -28.3 1778.8 -27.9 1777.9 -23.8 1777.7 -19.6 1777.4 -15.5 1777.1 -11 1773.6 -7.8 1763.3 -5.8 1763.9 -5.3 1764.6 -4.7 1765.6 -4.2 1764.5 -2.7 1763.9 -1 1758.8 -0.4 1752.3 0.4 1750.6 2.2 1750.1 4.4 1749.8 5.4 1750.7 6.7 1748.4 7.3 1736.4 10.7 1739.5 16.3 1739.9 21.5 1740.2 24.1 1739.1 26.6 1744.2 29.5 1751 33.4 1749.5 34.5 1737.2 34.7 1726.2 34.9 1715.8 35.5 1704.8 35.6 1683.8 35.8 1664.1 36.9 1642 36.1 1633.9 35.8 1626.2 35.3 1621.2 36.9 1618.3 37.9 1613 37.2 1608.4 36.5 1601.5 35.3 1596.9 35.5 1593.8 36.9 1590.1 38.5 1583.9 39.1 1576.6 39.2 1568 39.4 1559.8 40 1555.1 41.8 1550.9 43.5 1546.1 43.3 1538.3 41.6 1517.5 37 1495.1 33.7 1472.8 31.4 1444.6 28.4 1416.2 25.3 1390 27 1380.6 27.6 1373 28.2 1370.7 31 1366.4 36.2 1356.5 39.4 1335.4 39.3 1329.8 39.2 1324.1 39 1318.5 38.9 1303.1 38.8 1288.4 38.9 1275.6 40.6 1267.8 41.6 1263.2 43.5 1256.8 44.8 1248.2 46.5 1241.7 48.9 1229 49.4 1218.1 49.9 1211.1 52.9 1203.5 55 1200.9 55.8 1198.4 56.4 1193.8 56.2 1184.2 55.6 1178.6 57 1172.3 58.1 1160.4 60.3 1152.3 63.7 1140.8 66.1 1133.4 67.6 1125.4 68.8 1112.2 66.5 1103.6 65 1095.3 64.7 1088.1 65.6 1084 66.1 1078.5 66.5 1073.9 65.4 1061.3 62.4 1049.1 62.4 1036.7 61.3 1017.2 59.5 997.7 58.6 980.6 58.9 968.1 59.1 956.3 60.5 943.9 61.3 936.1 61.8 928.7 62.2 920 61.8 916.7 61.7 913.4 61.4 910.2 61.5 881.4 62 859.6 66.5 830 66.6 816.7 66.7 808.4 69.8 796.2 70 778.1 70.3 767.4 72.5 761.9 77 760.4 78.1 756.7 79.3 749.8 78.4 723.9 75.2 701.9 75.1 683.7 78.4 678.4 79.4 672.5 78.9 667.2 76.5 662.3 74.4 655.4 73.1 648.6 71.6 629.8 67.6 610 66.2 590.6 63.6 575 61.5 560.7 62.1 545.2 60 539.2 59.2 533.9 59.7 529.5 60.4 522.8 61.6 514.3 61.3 505.8 59.6 490 56.5 474.2 55.6 459.1 55 443.7 54.3 429.1 53.2 413.6 50.8 400.5 48.9 387 47.3 376.8 49.5 368 51.4 352.2 50.7 339.5 48.1 315.8 43.3 315.6 43.3 300.5 47.2 298.7 47.7 297.7 48.4 295.8 48.8 291.7 49.8 286.6 50.2 279.7 49.7 258.3 48.3 239.7 48.3 232 54 228.7 56.3 223 56.2 214 53.9 208.7 52.6 203.5 51.1 197.4 50.5 180.2 48.9 162.8 47.1 146.8 47.2 126 47.3 104.4 46.6 82.9 45.5 68 44.7 51.8 43.5 36 41.2 29.9 40.3 28.1 39.5 28.3 37.9 29.8 29.5 29.3 21 31.7 12.7 Z" fill="#F8EBE6"></path>
                 </svg>
                 </div>
+            </div>
             </div>
         )
     }

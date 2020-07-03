@@ -1,6 +1,10 @@
 .sale{
-    margin-top: 10px;
     font-size: 20px;
     margin-left: -10%;
     padding: 10px;
+}
+#stats-contianer{
+    background-color: #E0EBE3;
+    width: 100%;
+    margin-top: -60px;
 }

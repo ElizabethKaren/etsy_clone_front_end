@@ -1,4 +1,9 @@
 .div-wrap{
     padding-top: 70px;
     padding: 80px;
+    color: #232345;
+}
+#color{
+    background-color: #E0EBE3;
+    color: #232345;
 }

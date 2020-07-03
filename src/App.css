@@ -1,3 +1,7 @@
+#buttons{
+  background-color: #232345;
+  color: white;
+}
 .App {
   position: absolute;
   width: 100vw;

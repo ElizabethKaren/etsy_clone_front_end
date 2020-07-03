@@ -33,7 +33,7 @@ export class MessageAndResponse extends Component {
                 <input className='input' onChange={this.handleOnChange} value={this.state.responseInput} placeholder='Respond to potenial buyer...'></input>
                 <br></br><br></br><br></br>
                 {/* {reply ? reply.content : null } */}
-                <button className='ui tiny button' onClick={this.submitResponse}>Send Response</button>
+                <button className='ui tiny button' id='buttons' onClick={this.submitResponse}>Send Response</button>
             </div>
         )
     }

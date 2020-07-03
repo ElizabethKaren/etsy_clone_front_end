@@ -20,6 +20,8 @@ export class EditYourProf extends Component {
         const yourItems = this.props.items.filter(item => item.user_id === this.props.loggedInUser.id)
         if (!yourItems) return <div> Loading ... </div>
         return (
+            <div>
+                   <h1 id='homePageName'>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h1>
             <div className='items-con'>
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1440 50" preserveAspectRatio="xMaxYMid" aria-hidden="true" focusable="false">
@@ -28,11 +30,11 @@ export class EditYourProf extends Component {
                 </svg>
                 </div>
                 <div className='prof-buttons-container'>
-                <Link to='/profile/tellmystory'><button className="ui tiny button" tabindex="0">Tell My Story</button></Link>
-                <Link to='/profile/edit'><button className="ui tiny button" tabindex="0">Edit Your Profile</button></Link>
-                <Link to='/profile/messages'><button className="ui tiny button" tabindex="0">Messages</button></Link>
-                <Link to='/profile/stats'><button className="ui tiny button" tabindex="0">My Sales Statistics</button></Link>
-                <Link to='/profile'><button className="ui tiny button" tabindex="0">Profile</button></Link>
+                <Link to='/profile/tellmystory'><button className="ui tiny button" id='buttons' tabindex="0">Tell My Story</button></Link>
+                <Link to='/profile/edit'><button className="ui tiny button" id='buttons' tabindex="0">Edit Your Profile</button></Link>
+                <Link to='/profile/messages'><button className="ui tiny button" id='buttons' tabindex="0">Messages</button></Link>
+                <Link to='/profile/stats'><button className="ui tiny button" id='buttons' tabindex="0">My Sales Statistics</button></Link>
+                <Link to='/profile'><button className="ui tiny button" id='buttons' tabindex="0">Profile</button></Link>
                 </div>
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 20 1440 80" preserveAspectRatio="xMaxYMid" aria-hidden="true" focusable="false">
@@ -53,7 +55,7 @@ export class EditYourProf extends Component {
                 </div>
                 <div className='items-for-edit'>
                 {yourItems.map(item => <ItemEdit updatePrice={this.props.updatePrice} key={item.id} {...item} /> )}
-                <button onClick={() => this.props.handleDeleteUser(this.props.loggedInUser.id)} className='ui button'>Delete Profile</button>
+                <button onClick={() => this.props.handleDeleteUser(this.props.loggedInUser.id)} className='ui button' id='buttons'>Delete Profile</button>
                 </div>
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 20 1440 80" preserveAspectRatio="xMaxYMid" aria-hidden="true" focusable="false">
@@ -64,6 +66,7 @@ export class EditYourProf extends Component {
                 <br></br>
                 <br></br>
                 <br></br>
+            </div>
             </div>
         )
     }

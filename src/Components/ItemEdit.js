@@ -23,7 +23,7 @@ export class ItemEdit extends Component {
                 <h2>{this.props.title}: {this.props.category} : {this.props.material}</h2>
                 <img src={this.props.picture} alt={this.props.titile} /> 
                 {this.state.showInput ? <h3><input onChange={this.handleOnChange} value={this.state.newPrice} placeholder='new price...'></input></h3>:<h2>${this.props.price}</h2> } 
-                <button className='ui tiny button' onClick={this.seeInput}>{this.state.showInput ? 'Update Price' :'Lower Price'} </button>
+                <button className='ui tiny button' id='buttons' onClick={this.seeInput}>{this.state.showInput ? 'Update Price' :'Lower Price'} </button>
             </div>
             </div>
         )

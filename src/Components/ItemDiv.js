@@ -5,7 +5,7 @@ import '../Styles/ItemDiv.css'
 export class ItemDiv extends Component {
 
     starsString = (number) => {
-        return '⭐'.repeat(number);
+        return '★'.repeat(number);
      }
 
 

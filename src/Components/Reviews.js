@@ -3,7 +3,7 @@ import '../Styles/Reviews.css'
 
 export class Reviews extends Component {
     starsString = (number) => {
-        return '⭐'.repeat(number);
+        return '★'.repeat(number);
      }
 
     render() {

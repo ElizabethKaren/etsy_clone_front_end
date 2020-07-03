@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 export class ReviewForm extends Component {
     starsString = (number) => {
-        return '⭐'.repeat(number);
+        return '★'.repeat(number);
      }
 
     render() {
