@@ -10,7 +10,7 @@ export class View extends Component {
         let highestClick = clicksAmout[0]
         let amount = this.props.clicks.filter(click => click.item_id === this.props.item.id )
         let color = amount.length === highestClick ? '#232345' : '#EF5809' 
-        console.log(clicksAmout)
+  
         return (
             <div className='stats-container'>
                 <div>{this.props.item.title} recieved {amount.length} clicks this month</div>

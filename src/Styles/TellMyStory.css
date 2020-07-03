@@ -1,6 +1,12 @@
 .your-story-submission{
-    padding-top: 100px;
+    padding-top: 1px;
     width: 60%;
-
-    margin-left: 100px;
+    margin-left: 130px;
+    padding-bottom: 10px;
+}
+.your-stats{
+    margin-top: -10px;
+    padding-bottom: 20px;
+    width: 70%;
+    padding-left: 150px;
 }
