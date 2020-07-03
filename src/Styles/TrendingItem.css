@@ -2,10 +2,15 @@
     position: relative;
     display: inline-block;
     width: 100vw;
-    top: 40px;
+    top: -10px;
+    margin-bottom: -50px;
 }
 #the-one-trending{
   width: 280px;
   height: 280px;
-
 }
+/* #color{
+
+  width: 100%;
+  bottom: 30px;
+} */
