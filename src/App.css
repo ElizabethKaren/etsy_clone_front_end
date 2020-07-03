@@ -2,6 +2,10 @@
   background-color: #232345;
   color: white;
 }
+#yourFavsName{
+  color: #232345;
+  font-family: 'Times New Roman', Times, serif;
+}
 .App {
   position: absolute;
   width: 100vw;

@@ -1,13 +1,40 @@
-.card-holer{
-    flex-direction: left;
-    padding-left: 100px;
-    padding-bottom: 90px;
+#myFavsContainer{
+    background-color: #DAE5F3;
+    width: 100%;
+    margin-bottom: -40px;
+}
+.card-holder{
+    position: relative;
+    float: left;
+    display: block;
+    /* padding-left: 10px; */
+    padding-bottom: 30px;
+    background-color: #DAE5F3;
+    height: 430px;
+    width: 100%;
 }
 .favs-div{
-    padding-top: 130px;
+    padding-top: 100px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #232345;
     padding-bottom: 100px;
-    background-color: #F8EBE6;
+    background-color: #DAE5F3;
     margin-top: -10px;
+    padding: 50px;
+    width: 100vw;
+}
+/* #something{
+    position: relative;
+    float: left;
+    width: 250px;
+    height: 400px;
+    background-color: #F8EBE6;
+} */
+#pink{
+    background-color: #DAE5F3;
+    width: fit-content;
+}
+.backGoundColor{
+    background-color: #DAE5F3;
+    width: 100vw;
 }
