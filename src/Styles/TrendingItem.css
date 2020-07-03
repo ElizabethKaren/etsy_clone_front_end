@@ -6,8 +6,9 @@
     margin-bottom: -20px;
 }
 #the-one-trending{
-  width: 280px;
-  height: 280px;
+  width: 220px;
+  height: 220px;
+  position: relative;
 } 
 #color{
   width: 100%;

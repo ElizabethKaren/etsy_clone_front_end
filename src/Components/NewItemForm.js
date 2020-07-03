@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../Styles/NewItemForm.css'
 
 export class NewItemForm extends Component {
     state = {
@@ -31,6 +32,7 @@ export class NewItemForm extends Component {
         mats.sort((a,b)=> a > b ? 1 : - 1)
 
         return (
+            <div className='newItemForm'>
             <div className='ui form'>
                 <p>Choose Category</p>
                 <select name='category' onChange={this.handleOnChange}>
@@ -40,16 +42,17 @@ export class NewItemForm extends Component {
                 <select name='materials' onChange={this.handleOnChange}>
                     {mats.map(mat => <option>{mat}</option>)}
                 </select>
-                <div className='fields'>
+                <div className='three fields'>
                 <br></br>
-                <input placeholder='item title' onChange={this.handleOnChange} name='title' value={this.state.title}></input>
+                <input placeholder='item title' className='field' onChange={this.handleOnChange} name='title' value={this.state.title}></input>
                 <br></br>
-                <input placeholder='item picture' onChange={this.handleOnChange} name='picture' value={this.state.picture}></input>
+                <input placeholder='item picture' className='field' onChange={this.handleOnChange} name='picture' value={this.state.picture}></input>
                 <br></br>
-                <input placeholder='item price' onChange={this.handleOnChange} name='price' value={this.state.price}></input>
+                <input placeholder='item price' className='field' onChange={this.handleOnChange} name='price' value={this.state.price}></input>
                 <br></br>
                 </div>
-                <button className="ui button" tabindex="0" onClick={this.addNewItem}>Submit</button>
+                <button className="ui button" id='buttons' tabindex="0" onClick={this.addNewItem}>Submit</button>
+            </div>
             </div>
         )
     }

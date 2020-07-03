@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import '../Styles/Nav.css'
-import FlatsyLogo from '../Styles/images/flatsylogo.png'
+import FlatsyLogo from '../Styles/images/flatsylogo.jpg'
 
 export class Nav extends Component {
     isCart = (array) => {
