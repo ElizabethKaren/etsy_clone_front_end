@@ -29,7 +29,7 @@
     left: 30px;
     border-radius: 30px;
     font-size: 15px;
-    background-color: #DAE5F3;
+    background-color: lightgrey;
     /* padding-left: -30px;  */
 }
 .searchBar:hover{

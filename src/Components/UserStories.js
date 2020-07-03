@@ -5,7 +5,7 @@ import '../Styles/UserStories.css'
 
 export class UserStories extends Component {
     render() {
-        console.log(this.props.stories)
+    
         return (
             <div>
             <div id='stoies-container'>
