@@ -26,7 +26,7 @@ export class TellMyStory extends Component {
 
     render() {
 
-        if (this.state.storySubmited) return <div className='your-story-submission'><h3>Thank you, your story will be reviewed shortly!</h3></div>
+        if (this.state.storySubmited) return <div className='prof-buttons-container'><h3>Thank you, your story will be reviewed shortly!</h3></div>
         return (
             <div>
                  <h1 id='homePageName'>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h1>
