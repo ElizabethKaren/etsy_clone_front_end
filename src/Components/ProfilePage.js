@@ -24,8 +24,6 @@ export class ProfilePage extends Component {
         return (
             <div>
                 <h1 id='homePageName'>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h1>
-                {/* <div className='message-wrap'>
-                </div> */}
                 <div >
                     <div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1440 50" preserveAspectRatio="xMaxYMid" aria-hidden="true" focusable="false">
@@ -54,11 +52,11 @@ export class ProfilePage extends Component {
               </div>
               <div className='items-for-edit'>
               <h3 className="right-floated">Your Items For Sale</h3>
-                <button className="ui button" tabindex="0" id='buttons' onClick={this.click}>Add New Item</button>
-                {this.state.formVisable ? <NewItemForm materials={this.props.materials} newItemSubmit={this.props.newItemSubmit} user_id={this.props.loggedInUser.id} categories={this.props.categories} /> : null }
                 <div className="items">
                 {yourItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item} /> )}
                 </div>
+                <button className="ui button" tabindex="0" id='buttons' onClick={this.click}>Add New Item</button>
+                {this.state.formVisable ? <NewItemForm materials={this.props.materials} newItemSubmit={this.props.newItemSubmit} user_id={this.props.loggedInUser.id} categories={this.props.categories} /> : null }
                 </div>
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 20 1440 80" preserveAspectRatio="xMaxYMid" aria-hidden="true" focusable="false">

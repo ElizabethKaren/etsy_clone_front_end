@@ -30,7 +30,6 @@ const historyUrl = 'http://localhost:3000/histories'
 export class App extends Component {
   state = {
     itemIndex: 0,
-    displayItem: null,
     items: [],
     reviews: [],
     purchases: [],
@@ -39,7 +38,6 @@ export class App extends Component {
     logInFormPassWord: '',
     catagory: '',
     cart: null,
-    userSignedIn: false,
     replies: [],
     loggedInUser: {first_name: 'User'},
     messages: [],
@@ -189,7 +187,7 @@ this.state.cart.forEach(item =>
     body: JSON.stringify({ item_id: item.id, user_id: this.state.loggedInUser.id })
   }).then(res => res.json()).then(newPurch => this.setState({ purchases: [...this.state.purchases, newPurch] }) )
   )
-  this.setState({ cart: [] })
+  this.setState({ cart: null })
 }
 
 updatePrice = (money, id) => {
