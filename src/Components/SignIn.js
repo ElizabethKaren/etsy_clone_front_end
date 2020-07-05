@@ -23,10 +23,10 @@ export class SignIn extends Component {
                 </svg>
                 </div>
             <div className='sign-in-page'>
-                <button id='buttons' onClick={this.handleOnChangeLog} className="ui button" tabindex="0" name='signInFormVisable'>Sign In</button>
+                {this.state.signInFormVisable || this.state.createAccountFormVisable ? null : <button id='buttons' onClick={this.handleOnChangeLog} className="ui button" tabindex="0" name='signInFormVisable'>Sign In</button>}
                 {this.state.createAccountFormVisable ? <CreateAccountForm createAccout={this.props.createAccout}/> : null }
                 {/* <button className="ui button" onClick={this.handleOnChangeCreate} name='createAccountFormVisable'>{this.state.createAccountFormVisable ? null : 'Create Account' }</button> */}
-                {this.state.createAccountFormVisable ? null : <button id='buttons' className="ui button" onClick={this.handleOnChangeCreate} name='createAccountFormVisable'>Create Account</button> }
+                {this.state.createAccountFormVisable || this.state.signInFormVisable ? null : <button id='buttons' className="ui button" onClick={this.handleOnChangeCreate} name='createAccountFormVisable'>Create Account</button> }
                 {this.state.signInFormVisable ? <div className='ui form' id='signInForm'><input onChange={this.props.handleSignIn} placeholder='email' value={this.props.logInFormEmail} name='logInFormEmail'></input> <input onChange={this.props.handleSignIn} name='logInFormPassWord' value={this.props.logInFormPassWord} placeholder='password'></input> <br></br> <br></br> <Link to='/' className="ui tiny button" id='buttons' onClick={this.props.verifyUser}>Sign In</Link></div> : null }
             </div>
                 <div>
