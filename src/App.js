@@ -41,7 +41,7 @@ export class App extends Component {
     cart: null,
     userSignedIn: false,
     replies: [],
-    loggedInUser: {"id":1,"first_name":"Laine","last_name":"Robel","password":"password1","bio":"This woman hates me so much, I’m starting to like her.","bank_num":null,"email":"fake@email.com","created_at":"2020-06-29T15:04:54.993Z","updated_at":"2020-06-29T15:04:54.993Z"},
+    loggedInUser: null,
     messages: [],
     favorites: [],
     searchBarInput: '',
