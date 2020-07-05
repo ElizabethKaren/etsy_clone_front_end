@@ -12,8 +12,8 @@ export class MessageDiv extends Component {
 
     render() {
         const user = this.props.users.find(user => user.id === this.props.buyer_id)
-  
-        if (!user) return <div>Loading...</div>
+        
+        // if (!user) return <div>Loading...</div>
         const theseReplies = this.props.replies.filter(reply => reply.message_id === this.props.id)
 
         return (
