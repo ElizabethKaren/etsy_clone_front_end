@@ -21,7 +21,7 @@ export class Another extends Component {
       }
 
     render() {
-        if(this.props.loggedInUser.first_name === 'User') return <div className='navbar'> <NavLink to='/login'>Log In</NavLink></div>
+        if(this.props.loggedInUser.first_name === 'User') return <div className='navbar'> <NavLink to='/login'>Log In of Create An Acount</NavLink></div>
         return (
             <div>
             <div className='navbar'>

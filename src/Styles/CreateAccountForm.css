@@ -1,0 +1,17 @@
+.sign-in-page{
+    height: 400px;
+    margin-top: -10px;
+    background-color: #F39CD5;
+}
+.signInForm{
+    padding: 50px;
+}
+#colorforForm{
+    /* background-color: #DAE5F3; */
+    margin-top: -10px;
+}
+#page-width{
+    width: 90%;
+    padding-left: 150px;
+    align-items: center;
+}
