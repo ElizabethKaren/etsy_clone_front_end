@@ -10,7 +10,7 @@ export class Another extends Component {
         } else if (array.length === 1){
             return '1 Item in Cart'
         } else {
-            return `${array.lenght} Items in Cart`
+            return `${array.length} Items in Cart`
         }
       }
   
