@@ -3,7 +3,6 @@ import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
 import MessageDiv from './MessageDiv'
 import '../Styles/ItemContainer.css'
-import Footer from './Footer'
 
 export class ItemContainer extends Component {
     state = {
@@ -48,8 +47,10 @@ export class ItemContainer extends Component {
                 },
                 body: JSON.stringify(obj)
             }).then(res => res.json()).then(mes => this.props.addNewMessage(mes))
-         }
+            this.setState({ messageBarVisable: !this.state.messageBarVisable })
+         } else {
          this.setState({ messageBarVisable: !this.state.messageBarVisable })
+         }
     }
 
 
@@ -80,7 +81,7 @@ export class ItemContainer extends Component {
             <div className='div-wrap'>
             <div className='ui celled grid' id='color'>
                <h1>{oneItem.title} : {oneItem.category} </h1>
-               <img src={oneItem.picture} alt={oneItem.title} />
+               <img className='item-con-pic' src={oneItem.picture} alt={oneItem.title} />
                {this.props.loggedInUser.first_name === 'User' ? null : <h1 onClick={() => this.props.favorite(this.props.thisID, this.isFavorite(thisItemsArray))}>{this.isFavorite(thisItemsArray) ? '🖤' : '♡' }</h1>}
                <h4>${oneItem.price}</h4>
              <h4>{totalReviewsAmount === 0? 'Be the first to Review' : this.starsString(nowManyStars) }</h4>
