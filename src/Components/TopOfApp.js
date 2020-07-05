@@ -59,7 +59,7 @@ export class TopOfApp extends Component {
                 </svg>
                 </div>
                 <div className="items" id='pink-color'>
-               {itemsShown.map(item => <ItemDiv key={item.id} {...item} reviews={this.props.reviews} /> ) }
+               {itemsShown.map(item => <ItemDiv addToStats={this.props.addToStats} loggedInUser={this.props.loggedInUser} key={item.id} {...item} reviews={this.props.reviews} /> ) }
                 </div>
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 20 1440 80" preserveAspectRatio="xMaxYMid" aria-hidden="true" focusable="false">

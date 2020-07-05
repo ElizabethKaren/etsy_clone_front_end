@@ -20,7 +20,7 @@ export class ProfilePage extends Component {
 
     render() {
         const yourItems = this.props.items.filter(item => item.user_id === this.props.loggedInUser.id) 
-        
+        if(!this.props.loggedInUser.id) return <div className='not-logged-in'> Logged out</div>
         return (
             <div>
                 <h1 id='homePageName'>{this.props.loggedInUser.first_name} {this.props.loggedInUser.last_name}</h1>

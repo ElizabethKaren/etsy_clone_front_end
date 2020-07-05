@@ -26,3 +26,9 @@ width: 100%;
     color: #EF5809;
     margin-top: 40px;
 }
+.not-logged-in{
+    padding: 100px;
+    height: 500px;
+    font-size: 40px;
+    color: #EF5809;
+}

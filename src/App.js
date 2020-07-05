@@ -10,7 +10,7 @@ import Nav from './Components/Nav'
 import SignIn from './Components/SignIn'
 import MyFavs from './Components/MyFavs'
 import Footer from './Components/Footer'
-import Another from './Components/Another'
+import AnotherNav from './Components/AnotherNav'
 import UserStories from './Components/UserStories'
 import MyMessages from './Components/MyMessages';
 import MyStats from './Components/MyStats'
@@ -116,11 +116,15 @@ handleSignIn = (event) => this.setState({ [event.target.name]: event.target.valu
 
 verifyUser = () => {
   const user = this.state.users.find(user => user.email === this.state.logInFormEmail)
-  if(user.password === this.state.logInFormPassWord){
-    this.setState({ loggedInUser: user })
+  if(!user) {
+    alert('Incorrect Email of Password')
   } else {
-    alert('Incorrect Email or Password')
-  }
+    if(user.password === this.state.logInFormPassWord){
+      this.setState({ loggedInUser: user })
+    } else {
+      alert('Incorrect Email or Password')
+    }
+ }
 }
 
 handleSignOut = () => this.setState({ loggedInUser: {first_name: 'User'} })
@@ -203,6 +207,8 @@ updatePrice = (money, id) => {
   }).then(res => res.json()).then(item => this.setState({ items: itemsArray }))
 }
 
+addToStats = (obj, item) => this.setState({ clicks: [...this.state.clicks, {...obj,item}] })
+
 
 handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
 
@@ -218,7 +224,7 @@ newStory = event => console.log(event.target)
 
   return(
     <div className="App">
-      <Another handleOnSearch={this.handleOnSearch} searchBarInput={this.state.searchBarInput} userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart}/> 
+      <AnotherNav handleOnSearch={this.handleOnSearch} searchBarInput={this.state.searchBarInput} userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart}/> 
       <Nav handleOnSearch={this.handleOnSearch} searchBarInput={this.state.searchBarInput} userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart} /> 
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
@@ -235,7 +241,7 @@ newStory = event => console.log(event.target)
        <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
        <Route path='/profile' render={() => <ProfilePage materials={materials} favorites={this.state.favorites} newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout cartCheckout={this.cartCheckout} cart={this.state.cart} reviews={this.state.reviews} /> } />
-       <Route path='/' render={() => <TopOfApp materials={materials} categories={categories} index={this.state.itemIndex} items={items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
+       <Route path='/' render={() => <TopOfApp addToStats={this.addToStats} loggedInUser={this.state.loggedInUser} materials={materials} categories={categories} index={this.state.itemIndex} items={items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
        <Footer /> 
     </div>
