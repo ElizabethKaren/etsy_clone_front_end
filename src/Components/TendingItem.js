@@ -29,7 +29,7 @@ export class TendingItem extends Component {
                 </svg>
                 </div>
             <div className='trendingBar' id='color'>
-                <h3>Trending Items...</h3>
+                <h3 id='trending-font'>Trending Items...</h3>
                 <div className='ui medium image' id='the-one-trending'>
                <Link to={`/items/${this.displayItemId(item)}`}>{this.displayTrendingItem(item)}</Link>
                 </div>

@@ -14,4 +14,7 @@
   width: 100%;
   bottom: -30px;
   background-color: #E0EBE3;
-} 
+}
+#trending-font{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}

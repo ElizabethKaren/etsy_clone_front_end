@@ -17,7 +17,13 @@ export class ItemContainer extends Component {
         return '★'.repeat(number);
      }
 
-     handleOnClick = () => this.setState({ reviewFormVisable: !this.state.reviewFormVisable })
+     handleOnClick = () => {
+         if(!this.props.loggedInUser.id){
+             alert('MUST BE LOGGED IN TO LEAVE A REVIEW')
+         } else {
+         this.setState({ reviewFormVisable: !this.state.reviewFormVisable })
+         }
+     }
 
      handleOnchange = event => this.setState({ [event.target.name]: event.target.value })
 
@@ -30,7 +36,9 @@ export class ItemContainer extends Component {
      whosTheSeller = () => (this.props.items.find(item => item.id === this.props.thisID)).id 
     
      handleMessage = () => {
-         if(this.state.questionInput != ''){
+         if (!this.props.loggedInUser.id){
+            alert('MUST BE LOGGED IN TO ASK A QUESTION')
+        } else if(this.state.questionInput != ''){
              const obj = {content: this.state.questionInput, item_id: this.props.thisID, seller_id: this.whosTheSeller() , buyer_id: this.props.loggedInUser.id}
              fetch('http://localhost:3000/messages', {
                 method: 'POST',
@@ -72,7 +80,7 @@ export class ItemContainer extends Component {
             <div className='div-wrap'>
             <div className='ui celled grid' id='color'>
                <h1>{oneItem.title} : {oneItem.category} </h1>
-               <img className='ui image' src={oneItem.picture} alt={oneItem.title} />
+               <img src={oneItem.picture} alt={oneItem.title} />
                {this.props.loggedInUser.first_name === 'User' ? null : <h1 onClick={() => this.props.favorite(this.props.thisID, this.isFavorite(thisItemsArray))}>{this.isFavorite(thisItemsArray) ? '🖤' : '♡' }</h1>}
                <h4>${oneItem.price}</h4>
              <h4>{totalReviewsAmount === 0? 'Be the first to Review' : this.starsString(nowManyStars) }</h4>
