@@ -60,7 +60,7 @@ export class CreateAccountForm extends Component {
                   <input type="password" name="passwordConfirmation" onChange={this.handleOnChange} placeholder='Password Confirmation' value={this.state.passwordConfirmation}></input> 
                   </div>
                </div>
-               <div className="ui button" tabindex="0" onClick={this.handleOnClick}>Create Account</div>
+               <div className="ui button" id='buttons' tabindex="0" onClick={this.handleOnClick}>Create Account</div>
             </div>
         )
     }

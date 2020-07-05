@@ -41,7 +41,7 @@ export class App extends Component {
     cart: null,
     userSignedIn: false,
     replies: [],
-    loggedInUser: null,
+    loggedInUser: {first_name: 'User'},
     messages: [],
     favorites: [],
     searchBarInput: '',

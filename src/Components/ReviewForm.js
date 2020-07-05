@@ -6,6 +6,7 @@ export class ReviewForm extends Component {
      }
 
     render() {
+       if (this.props.loggedInUser.first_name === 'User') return alert('Must be signed in to leave a review')
         return (
             <div className='ui form'>
                 <select onChange={this.props.handleOnchange} name='reviewStarRating'>

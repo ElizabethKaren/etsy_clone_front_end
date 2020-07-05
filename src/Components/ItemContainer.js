@@ -73,7 +73,7 @@ export class ItemContainer extends Component {
             <div className='ui celled grid' id='color'>
                <h1>{oneItem.title} : {oneItem.category} </h1>
                <img className='ui image' src={oneItem.picture} alt={oneItem.title} />
-               <h1 onClick={() => this.props.favorite(this.props.thisID, this.isFavorite(thisItemsArray))}>{this.isFavorite(thisItemsArray) ? '🖤' : '♡' }</h1>
+               {this.props.loggedInUser.first_name === 'User' ? null : <h1 onClick={() => this.props.favorite(this.props.thisID, this.isFavorite(thisItemsArray))}>{this.isFavorite(thisItemsArray) ? '🖤' : '♡' }</h1>}
                <h4>${oneItem.price}</h4>
              <h4>{totalReviewsAmount === 0? 'Be the first to Review' : this.starsString(nowManyStars) }</h4>
              <div className='row'>
@@ -82,7 +82,7 @@ export class ItemContainer extends Component {
               <div className=''>
              <div className='ui comments row'>
              <button onClick={this.handleOnClick} className='ui dividing header'>Add Review</button>
-             {this.state.reviewFormVisable ? <ReviewForm submitReview={this.submitReview} handleOnchange={this.handleOnchange} reviewInput={this.state.reviewInput} item={oneItem}/> : null }
+             {this.state.reviewFormVisable ? <ReviewForm loggedInUser={this.props.loggedInUser} submitReview={this.submitReview} handleOnchange={this.handleOnchange} reviewInput={this.state.reviewInput} item={oneItem}/> : null }
              {theseReviews.map(review => <Reviews users={this.props.users} key={review.id} {...review} />)}
              </div>
              <div className='ui comments row'>
