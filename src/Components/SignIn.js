@@ -26,7 +26,7 @@ export class SignIn extends Component {
                 {this.state.createAccountFormVisable ? <CreateAccountForm createAccout={this.props.createAccout}/> : null }
                 {/* <button className="ui button" onClick={this.handleOnChangeCreate} name='createAccountFormVisable'>{this.state.createAccountFormVisable ? null : 'Create Account' }</button> */}
                 {this.state.createAccountFormVisable ? null : <button id='buttons' className="ui button" onClick={this.handleOnChangeCreate} name='createAccountFormVisable'>Create Account</button> }
-                {this.state.signInFormVisable ? <div className='signInForm field'><input onChange={this.props.handleSignIn} placeholder='email' value={this.props.logInFormEmail} name='logInFormEmail'></input> <input onChange={this.props.handleSignIn} name='logInFormPassWord' value={this.props.logInFormPassWord} placeholder='password'></input> <br></br> <br></br> <button className="ui tiny button" id='buttons' onClick={this.props.verifyUser}>Sign In</button></div> : null }
+                {this.state.signInFormVisable ? <div className='ui form' id='signInForm'><input onChange={this.props.handleSignIn} placeholder='email' value={this.props.logInFormEmail} name='logInFormEmail'></input> <input onChange={this.props.handleSignIn} name='logInFormPassWord' value={this.props.logInFormPassWord} placeholder='password'></input> <br></br> <br></br> <button className="ui tiny button" id='buttons' onClick={this.props.verifyUser}>Sign In</button></div> : null }
             </div>
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 20 1440 80" preserveAspectRatio="xMaxYMid" aria-hidden="true" focusable="false">

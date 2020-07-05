@@ -3,8 +3,8 @@
     margin-top: -10px;
     background-color: #F39CD5;
 }
-.signInForm{
-    padding: 50px;
+#signInForm{
+    padding: 80px;
 }
 #colorforForm{
     /* background-color: #DAE5F3; */
