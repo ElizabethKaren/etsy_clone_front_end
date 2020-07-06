@@ -226,6 +226,7 @@ newStory = newStoryObj => this.setState({ stories: [...this.state.stories, newSt
       <Nav handleOnSearch={this.handleOnSearch} searchBarInput={this.state.searchBarInput} userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart} /> 
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
+         console.log(stuff)
          const thisID = parseInt(stuff.match.params.id)
        return <ItemContainer favorite={this.favorite} loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} addNewMessage={this.addNewMessage} messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
