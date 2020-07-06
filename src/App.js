@@ -215,6 +215,8 @@ handleDeleteUser = (id) => this.setState({ users: this.state.users.filter(user =
 
 newStory = newStoryObj => this.setState({ stories: [...this.state.stories, newStoryObj] })
 
+addItemToCLicks = obj => this.setState({ clicks: [...this.state.clicks, {item: obj, item_id: obj.id, user_id: this.state.loggedInUser.id, id: this.state.clicks.length + 1}] })
+
   render() {
     let materials = this.state.items.map(item => item.material)
     let categories = this.state.items.map(item => item.category)
@@ -226,7 +228,6 @@ newStory = newStoryObj => this.setState({ stories: [...this.state.stories, newSt
       <Nav handleOnSearch={this.handleOnSearch} searchBarInput={this.state.searchBarInput} userSignedIn={this.state.userSignedIn} loggedInUser={this.state.loggedInUser} cart={this.state.cart} /> 
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
-         console.log(stuff)
          const thisID = parseInt(stuff.match.params.id)
        return <ItemContainer favorite={this.favorite} loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} addNewMessage={this.addNewMessage} messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
@@ -240,7 +241,7 @@ newStory = newStoryObj => this.setState({ stories: [...this.state.stories, newSt
        <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
        <Route path='/profile' render={() => <ProfilePage materials={materials} favorites={this.state.favorites} newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout loggedInUser={this.state.loggedInUser} cartCheckout={this.cartCheckout} cart={this.state.cart} reviews={this.state.reviews} /> } />
-       <Route path='/' render={() => <TopOfApp addToStats={this.addToStats} loggedInUser={this.state.loggedInUser} materials={materials} categories={categories} index={this.state.itemIndex} items={items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
+       <Route path='/' render={() => <TopOfApp addItemToCLicks={this.addItemToCLicks} addToStats={this.addToStats} loggedInUser={this.state.loggedInUser} materials={materials} categories={categories} index={this.state.itemIndex} items={items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
        <History loggedInUser={this.state.loggedInUser} history={this.state.clicks} />
        <Footer /> 

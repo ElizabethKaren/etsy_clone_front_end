@@ -31,7 +31,7 @@ export class TendingItem extends Component {
             <div className='trendingBar' id='color'>
                 <h3 id='trending-font'>Trending Items...</h3>
                 <div className='ui medium image' id='the-one-trending'>
-               <Link to={`/items/${this.displayItemId(item)}`}>{this.displayTrendingItem(item)}</Link>
+               <Link to={`/items/${this.displayItemId(item)}`} onClick={() => this.props.addItemToCLicks(item)}>{this.displayTrendingItem(item)}</Link>
                 </div>
                 <div className='ui medium image'>
                     <img onClick={this.props.hideMaterials} src='https://static01.nyt.com/images/2020/04/10/smarter-living/00well-mask-guide/00well-mask-guide-articleLarge-v2.jpg?quality=90&auto=webp' alt='mask'/> 
