@@ -19,7 +19,7 @@ export class TellMyStory extends Component {
             accept: 'application/json'
         },
         body: JSON.stringify(obj)
-    }).then(res => res.json()).then(obj => console.log(obj))
+    }).then(res => res.json()).then(obj => this.props.newStory(obj))
     }
 
     handleOnClick = event => this.setState({ [event.target.name]: event.target.value })

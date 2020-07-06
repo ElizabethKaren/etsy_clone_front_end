@@ -1,0 +1,26 @@
+.history-container{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 100px;
+}
+.history-item{
+  float: left;
+  height: 150px;
+  margin-right: 20px;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: darkgray;
+  padding: 5px 10px 5px 10px;
+}
+.history-img{
+    height: 80px;
+    width: 90px;
+}
+#see-again{
+    float: center;
+}
+.item-history-title{
+    width: 90px;
+}

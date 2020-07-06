@@ -16,6 +16,7 @@ import MyMessages from './Components/MyMessages';
 import MyStats from './Components/MyStats'
 import EditYourProf from './Components/EditYourProf'
 import TellMyStory from './Components/TellMyStory'
+import History from './Components/History'
 
 const itemsUrl = 'http://localhost:3000/items'
 const reviewsUrl = 'http://localhost:3000/reviews'
@@ -39,7 +40,7 @@ export class App extends Component {
     catagory: '',
     cart: null,
     replies: [],
-    loggedInUser: {first_name: 'User'},
+    loggedInUser: {"id":184,"first_name":"Tona","last_name":"Stark","password":"password","bio":"Why do they make the condom packets so hard to open?","bank_num":null,"email":"marybelle_zieme@schimmel.info","created_at":"2020-07-05T23:53:54.332Z","updated_at":"2020-07-05T23:53:54.332Z"},
     messages: [],
     favorites: [],
     searchBarInput: '',
@@ -210,10 +211,9 @@ addToStats = (obj, item) => this.setState({ clicks: [...this.state.clicks, {...o
 
 handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
 
-handleDeleteUser = (id) => this.setState({ users: this.state.users.filter(user => user.id !== id), loggedInUser: null })
+handleDeleteUser = (id) => this.setState({ users: this.state.users.filter(user => user.id !== id), loggedInUser: {first_name: 'User'} })
 
-
-newStory = event => console.log(event.target)
+newStory = newStoryObj => this.setState({ stories: [...this.state.stories, newStoryObj] })
 
   render() {
     let materials = this.state.items.map(item => item.material)
@@ -241,6 +241,7 @@ newStory = event => console.log(event.target)
        <Route path='/checkout' render={()=> <Checkout loggedInUser={this.state.loggedInUser} cartCheckout={this.cartCheckout} cart={this.state.cart} reviews={this.state.reviews} /> } />
        <Route path='/' render={() => <TopOfApp addToStats={this.addToStats} loggedInUser={this.state.loggedInUser} materials={materials} categories={categories} index={this.state.itemIndex} items={items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
+       <History loggedInUser={this.state.loggedInUser} history={this.state.clicks} />
        <Footer /> 
     </div>
   )
