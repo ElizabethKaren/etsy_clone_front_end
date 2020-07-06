@@ -25,11 +25,13 @@ export class MessageAndResponse extends Component {
 
     render() {
         if(this.state.responded) return <div className='mess-wrap'>Thank you for your response </div>
+        const item = this.props.items.find(item => item.id === this.props.item_id)
         const reply = this.props.replies.find(reply => reply.message_id === this.props.id)
         if(reply) return null
         return (
             <div className='mess-wrap'>
-                <h4>{this.props.content}</h4>
+                <img className='small-pic' src={item.picture} alt={item.title}/> <h4 className='message-item'>{item.title}</h4>
+                <h3>{this.props.content}</h3>
                 <input className='input' onChange={this.handleOnChange} value={this.state.responseInput} placeholder='Respond to potenial buyer...'></input>
                 <br></br><br></br><br></br>
                 {/* {reply ? reply.content : null } */}
