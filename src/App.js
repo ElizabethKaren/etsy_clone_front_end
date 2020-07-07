@@ -229,7 +229,7 @@ addItemToCLicks = obj => this.setState({ clicks: [...this.state.clicks, {item: o
       <Switch>
        <Route path='/items/:id' name='item' render={(stuff) => {
          const thisID = parseInt(stuff.match.params.id)
-       return <ItemContainer favorite={this.favorite} loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} addNewMessage={this.addNewMessage} messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
+       return <ItemContainer sales={this.state.purchases} favorite={this.favorite} loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} addNewMessage={this.addNewMessage} messages={this.state.messages} replies={this.state.replies} userSignedIn={this.state.userSignedIn} handleNewReview={this.handleNewReview} users={this.state.users} reviews={this.state.reviews} thisID={thisID} items={this.state.items} handleInCart={this.handleInCart}/>
        } }/> 
        <Route path='/favorites' render={() => <MyFavs loggedInUser={this.state.loggedInUser} favorites={this.state.favorites} users={this.state.users} /> } /> 
        <Route path='/stories' render={() => <UserStories stories={this.state.stories}/> }/>

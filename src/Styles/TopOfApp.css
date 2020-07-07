@@ -23,7 +23,7 @@
     flex-direction: left;
     /* background-color: rgb(226, 224, 224); */
     background-color: #DAE5F3;
-    margin-top: -10px;
+    /* margin-top: -10px; */
 
 }
 .button{
@@ -47,6 +47,8 @@
 .small-button:hover{
   font-size: 16px;
 }
-/* .add-top{
-    margin-top: 100px;
-} */
+#color{
+    background-color: #DAE5F3;
+    margin-top: -10px;
+    width: 100vw;
+}

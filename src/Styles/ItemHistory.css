@@ -1,6 +1,7 @@
 .history-container{
     font-family: Georgia, 'Times New Roman', Times, serif;
-    height: 100px;
+    height: 240px;
+    overflow:hidden;
 }
 .history-item{
   float: left;
@@ -24,3 +25,4 @@
 .item-history-title{
     width: 90px;
 }
+
