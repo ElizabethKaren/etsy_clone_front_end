@@ -11,7 +11,6 @@ export class TellMyStory extends Component {
 
     submitStory = () => {
     const obj =  {user_first_name: this.props.loggedInUser.first_name, user_last_name: this.props.loggedInUser.last_name, story_title: this.state.title, sentance_1: this.state.story}
-    this.setState({ storySubmited: true })
     fetch('http://localhost:3000/stories', {
         method: 'POST',
         headers: {
@@ -20,6 +19,7 @@ export class TellMyStory extends Component {
         },
         body: JSON.stringify(obj)
     }).then(res => res.json()).then(obj => this.props.newStory(obj))
+    this.setState({ storySubmited: true })
     }
 
     handleOnClick = event => this.setState({ [event.target.name]: event.target.value })

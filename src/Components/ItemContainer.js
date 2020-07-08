@@ -81,7 +81,7 @@ export class ItemContainer extends Component {
         let howManyQ = questions.length
         let thisItemsArray = this.props.favorites.filter(fav => fav.item_id === id)
         let thisUser = thisItemsArray.find(item => item.user_id === this.props.loggedInUser.id)
-        console.log(sales.length)
+     
         return (
             <div className='div-wrap' id='centered'>
             <div className='ui celled grid' id='color'>

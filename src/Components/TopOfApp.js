@@ -42,7 +42,7 @@ export class TopOfApp extends Component {
                 <div id='color'>
                 <div className='buttons' onClick={this.showDiv}>
                     <button className='small-button' name='' onClick={this.hideMaterials}>All</button>
-                    {cats.map(cat => <button className='small-button' name={cat} key={cat.id}>{cat}</button>)}
+                    {cats.map((cat, index) => <button className='small-button' name={cat} key={index}>{cat}</button>)}
                 </div>
                 <div>
                     {this.state.showDiv ? <MaterialsDiv materials={materials} revertOptions={this.revertOptions} filterMats={this.filterMats} /> : null }

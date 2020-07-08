@@ -8,7 +8,8 @@ import '../Styles/ProfilePage.css'
 
 export class MyStats extends Component {
     state = {
-        viewSales: false  
+        viewSales: false,
+        monthArray: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December' ]
     }
 
     handleOnchange = () => this.setState({ viewSales: !this.state.viewSales })
@@ -58,8 +59,8 @@ export class MyStats extends Component {
                     <input onClick={this.handleOnchange} name='false' type='radio' value='false' checked={!this.state.viewSales}></input>
                     <br></br>
                     {this.state.viewSales
-                    ? theseClicks.map(click => <View clicks={this.props.clicks} key={click.id} {...click} /> )
-                    : sales.map(sale => <Sale prices={prices} {...sale} key={sale.id}/> )}
+                    ? theseClicks.map(click => <View months={this.state.monthArray} clicks={this.props.clicks} key={click.id} {...click} /> )
+                    : sales.map(sale => <Sale months={this.state.monthArray} prices={prices} {...sale} key={sale.id}/> )}
                 </div>
                 </div>
                 </div>

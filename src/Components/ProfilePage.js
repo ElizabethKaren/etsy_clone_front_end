@@ -53,7 +53,7 @@ export class ProfilePage extends Component {
               <div className='items-for-edit'>
               <h3 className="right-floated">Your Items For Sale</h3>
                 <div className="items">
-                {yourItems.map(item => <ItemDiv reviews={this.props.reviews} item={item.id} {...item} /> )}
+                {yourItems.map(item => <ItemDiv addToStats={this.props.addToStats} loggedInUser={this.props.loggedInUser} reviews={this.props.reviews} item={item.id} {...item} /> )}
                 </div>
                 <button className="ui button" tabindex="0" id='buttons' onClick={this.click}>Add New Item</button>
                 {this.state.formVisable ? <NewItemForm materials={this.props.materials} newItemSubmit={this.props.newItemSubmit} user_id={this.props.loggedInUser.id} categories={this.props.categories} /> : null }

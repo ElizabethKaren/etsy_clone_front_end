@@ -3,9 +3,7 @@ import '../Styles/UserStories.css'
 
 export class Story extends Component {
     render() {
-        console.log(this.props)
         return (
-  
             <div className='ui fluid card' id='story-card'>
                <h3>{this.props.story_title}</h3>
                <h4>by {this.props.user_first_name} {this.props.user_last_name}</h4>

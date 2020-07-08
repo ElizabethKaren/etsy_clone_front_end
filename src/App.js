@@ -208,7 +208,6 @@ updatePrice = (money, id) => {
 
 addToStats = (obj, item) => this.setState({ clicks: [...this.state.clicks, {...obj,item}] })
 
-
 handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
 
 handleDeleteUser = (id) => this.setState({ users: this.state.users.filter(user => user.id !== id), loggedInUser: {first_name: 'User'} })
@@ -239,7 +238,7 @@ addItemToCLicks = obj => this.setState({ clicks: [...this.state.clicks, {item: o
        <Route path='/profile/messages' render={() => <MyMessages items={this.state.items} replies={this.state.replies} loggedInUser={this.state.loggedInUser} messages={this.state.messages} />} /> 
        <Route path='/profile/newitem' render={() => <NewItemForm materials={materials} /> }/>
        <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
-       <Route path='/profile' render={() => <ProfilePage materials={materials} favorites={this.state.favorites} newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
+       <Route path='/profile' render={() => <ProfilePage addToStats={this.addToStats} materials={materials} favorites={this.state.favorites} newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 
        <Route path='/checkout' render={()=> <Checkout loggedInUser={this.state.loggedInUser} cartCheckout={this.cartCheckout} cart={this.state.cart} reviews={this.state.reviews} /> } />
        <Route path='/' render={() => <TopOfApp addItemToCLicks={this.addItemToCLicks} addToStats={this.addToStats} loggedInUser={this.state.loggedInUser} materials={materials} categories={categories} index={this.state.itemIndex} items={items} reviews={this.state.reviews} catagory={this.state.catagory} handleOnchange={this.handleOnchange} /> }/> 
        </Switch>
