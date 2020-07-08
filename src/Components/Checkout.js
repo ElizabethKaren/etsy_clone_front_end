@@ -28,7 +28,7 @@ export class Checkout extends Component {
                 </svg>
                 </div>
                 <div className='cart'>
-                 {this.props.cart ? <button id='buttons' onClick={this.completeOrder}>Order Now</button> : <Link to='/' id='buttons'><button className='tiny ui button' id='buttons'>Find Items</button></Link> }
+                 {this.props.cart ? <button id='buttons' className='ui tiny button' onClick={this.completeOrder}>Order Now</button> : <Link to='/' id='buttons'><button className='tiny ui button' id='buttons'>Find Items</button></Link> }
                  <h2>{this.state.orderComplete ? 'Thank you for your order!' : null }</h2>
                  <div className='ui celled grid'>
                 {this.props.cart ? this.props.cart.map(item => <ItemDiv key={item.id} {...item} reviews={this.props.reviews} />) : null }

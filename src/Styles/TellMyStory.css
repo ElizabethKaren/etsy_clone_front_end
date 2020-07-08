@@ -1,7 +1,7 @@
 .your-story-submission{
     padding-top: 1px;
     width: 60%;
-    margin-left: 130px;
+    margin-left: 180px;
     padding-bottom: 10px;
 }
 .your-stats{
@@ -15,9 +15,9 @@
     margin-top: -10px;
 }
 .your-story-submitted{
-    padding-top: 1px;
+    padding-top: 100px;
     width: 60%;
-    margin-left: 130px;
+    margin-left: 180px;
     padding-bottom: 10px;
     height: 300px;
 }

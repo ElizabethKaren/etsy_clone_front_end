@@ -109,7 +109,7 @@ export class TellMyStory extends Component {
                 <textarea onChange={this.handleOnClick} value={this.state.story} name='story' placeholder='Tell your story ...'></textarea>
                 <br></br>
                 </div>
-                <button onClick={this.submitStory} className='ui tiny button'>Submit Story</button>
+                <button className="ui tiny button" id='buttons' onClick={this.submitStory} className='ui tiny button'>Submit Story</button>
                 </div>
                 </form>
                 </div>
