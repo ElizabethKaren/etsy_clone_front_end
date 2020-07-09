@@ -61,7 +61,7 @@ componentDidMount(){
 }
 
 componentDidUpdate(){
-  setTimeout(this.changeTrendingItem, 5000)
+  setTimeout(this.changeTrendingItem, 9000)
 }
 
 changeTrendingItem = () => {
