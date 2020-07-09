@@ -20,7 +20,7 @@ export class MessageAndResponse extends Component {
              accept: 'application/json'
         },
         body: JSON.stringify(obj)
-    })
+    }).then(res => res.json()).then(newReply => this.props.addReply(newReply))
     }
 
     render() {

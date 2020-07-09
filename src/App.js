@@ -206,6 +206,8 @@ updatePrice = (money, id) => {
   }).then(res => res.json()).then(item => this.setState({ items: itemsArray }))
 }
 
+addReply = obj => this.setState({ replies: [...this.state.replies, obj]})
+
 addToStats = (obj, item) => this.setState({ clicks: [...this.state.clicks, {...obj,item}] })
 
 handleOnSearch = event => this.setState({ searchBarInput: event.target.value })
@@ -235,7 +237,7 @@ addItemToCLicks = obj => this.setState({ clicks: [...this.state.clicks, {item: o
        <Route path='/profile/tellmystory' render={() => <TellMyStory loggedInUser={this.state.loggedInUser} newStory={this.newStory}/> }/>
        <Route path='/profile/edit' render={() => <EditYourProf handleDeleteUser={this.handleDeleteUser} updatePrice={this.updatePrice} loggedInUser={this.state.loggedInUser} items={this.state.items} /> }/>
        <Route path='/profile/stats' render={() => <MyStats clicks={this.state.clicks} loggedInUser={this.state.loggedInUser} purchases={this.state.purchases} />} /> 
-       <Route path='/profile/messages' render={() => <MyMessages items={this.state.items} replies={this.state.replies} loggedInUser={this.state.loggedInUser} messages={this.state.messages} />} /> 
+       <Route path='/profile/messages' render={() => <MyMessages addReply={this.addReply} items={this.state.items} replies={this.state.replies} loggedInUser={this.state.loggedInUser} messages={this.state.messages} />} /> 
        <Route path='/profile/newitem' render={() => <NewItemForm materials={materials} /> }/>
        <Route path='/login' render={() => <SignIn createAccout={this.createAccout} verifyUser={this.verifyUser} handleSignIn={this.handleSignIn} logInFormEmail={this.props.logInFormEmail} logInFormPassWord={this.props.logInFormPassWord} />} /> 
        <Route path='/profile' render={() => <ProfilePage addToStats={this.addToStats} materials={materials} favorites={this.state.favorites} newItemSubmit={this.newItemSubmit} handleSignOut={this.handleSignOut} replies={this.state.replies} users={this.state.users} messages={this.state.messages} categories={categories} reviews={this.state.reviews} items={this.state.items} purchases={this.state.purchases} items={this.state.items} loggedInUser={this.state.loggedInUser}/> }/> 

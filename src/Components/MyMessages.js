@@ -39,7 +39,7 @@ export class MyMessages extends Component {
                 </svg>
                 </div>
                 <div className='add-pink-to-message'>
-                {messages.map(mes => <MessageAndResponse items={this.props.items} replies={this.props.replies} loggedInUser={this.props.loggedInUser} key={mes.id} {...mes} /> )}
+                {messages.map(mes => <MessageAndResponse addReply={this.props.addReply} items={this.props.items} replies={this.props.replies} loggedInUser={this.props.loggedInUser} key={mes.id} {...mes} /> )}
                 </div>
                 <div>
                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 20 1440 80" preserveAspectRatio="xMaxYMid" aria-hidden="true" focusable="false">
