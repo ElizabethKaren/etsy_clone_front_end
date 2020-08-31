@@ -3,4 +3,4 @@
 <h2>Sellers can see their click/sell through statistics</h2>
 <img src='./stats.png' alt='stats' />
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nN3TkD_mlj0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<img width="560" height="315" src="https://www.youtube.com/embed/nN3TkD_mlj0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></img>
