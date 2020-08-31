@@ -40,7 +40,7 @@ export class App extends Component {
     catagory: '',
     cart: null,
     replies: [],
-    loggedInUser: {"id":184,"first_name":"Tona","last_name":"Stark","password":"password","bio":"Why do they make the condom packets so hard to open?","bank_num":null,"email":"marybelle_zieme@schimmel.info","created_at":"2020-07-05T23:53:54.332Z","updated_at":"2020-07-05T23:53:54.332Z"},
+    loggedInUser: {"id":1,"first_name":"Jody","last_name":"Schultz","password":"password","bio":"She has man hands.","bank_num":null,"email":"wayne@jaskolski.info","created_at":"2020-08-31T22:07:25.965Z","updated_at":"2020-08-31T22:07:25.965Z"},
     messages: [],
     favorites: [],
     searchBarInput: '',
